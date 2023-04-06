@@ -1,0 +1,67 @@
+
+    <div class="row">
+        <br>
+        <div class="col-md-4 outerdivform">
+            <form [formGroup]="registerform" (ngSubmit)="register()">
+                <div class="innerdivform">
+                    <br><br>
+                    <div class="form-group">
+                        <label for="name" class="control-label inputlabeldesign" style="margin-left:150px;">Name</label><br />
+                        <input id="name" type="text"class=" inputdesign" formControlName="name"/>
+                        <div *ngIf="registerform.controls['name'].invalid || registerform.controls['name'].errors">
+                            <div *ngIf="registerform.controls['name'].errors?.['required']" >
+                                Name is required.
+                              </div>
+                        </div>
+                        <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+  <div *ngIf="name.errors?.['required']">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors?.['minlength']">
+    Name must be at least 4 characters long.
+  </div>
+  <div *ngIf="name.errors?.['forbiddenName']">
+    Name cannot be Bob.
+  </div>
+</div>-->
+                    </div> 
+                    <div class="form-group">
+                        <label for="email" class="control-label inputlabeldesign" style="margin-left:140px;">Mail Id</label><br />
+                        <input id="email" class="inputdesign" type="email" formControlName="email"/>
+                        
+                         
+                        
+                        <!-- <span  class="textvaliddesign">
+                            <span *ngIf="errormsg!=''">{{errormsg}}</span>
+                        </span> -->
+                        <!-- @if (@ViewBag.msg != null)
+                        {
+                            <p class="textvaliddesign">@ViewBag.msg</p>
+                        } -->
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label inputlabeldesign" style="margin-left:135px;">Password</label><br />
+                        <input id="password" type="password" class="inputdesign " formControlName="password"/>
+                       
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword" class="control-label inputlabeldesign"style="margin-left:100px;">Confirm Password</label><br />
+                        <input id="confirmpassword" type="password" class="inputdesign" formControlName="confirmpassword" />
+                        <span  class="textvaliddesign">
+                           
+                        </span>
+                    </div>
+                    
+                 
+                    <div class="form-group" style="margin-left:90px;">
+                        <input type="submit" value="Register" style="background-color:darkgreen;color:white;width:140px;height:40px;margin-top:10px;border:none;" class="button-design" />
+                    </div>
+
+
+                </div><br>
+                <a routerLink="/Login" style="margin-left:80px;margin-left:390px;font-size:15px;text-decoration:none;color:antiquewhite;">Already Registered? Sign in</a>
+            </form>
+        </div>
+    </div>
+
