@@ -9,45 +9,46 @@
                         <label for="name" class="control-label inputlabeldesign" style="margin-left:150px;">Name</label><br />
                         <input id="name" type="text"class=" inputdesign" formControlName="name"/>
                         <div *ngIf="registerform.controls['name'].invalid || registerform.controls['name'].errors">
-                            <div *ngIf="registerform.controls['name'].errors?.['required']" >
-                                Name is required.
-                              </div>
-                        </div>
-                        <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-
-  <div *ngIf="name.errors?.['required']">
-    Name is required.
-  </div>
-  <div *ngIf="name.errors?.['minlength']">
-    Name must be at least 4 characters long.
-  </div>
-  <div *ngIf="name.errors?.['forbiddenName']">
-    Name cannot be Bob.
-  </div>
-</div>-->
+                            <div *ngIf="registerform.controls['name'].errors?.['required'] && registerform.controls['name'].touched" >
+                                This field is required.                              
+                            </div>
                     </div> 
                     <div class="form-group">
                         <label for="email" class="control-label inputlabeldesign" style="margin-left:140px;">Mail Id</label><br />
                         <input id="email" class="inputdesign" type="email" formControlName="email"/>
-                        
-                         
-                        
-                        <!-- <span  class="textvaliddesign">
-                            <span *ngIf="errormsg!=''">{{errormsg}}</span>
-                        </span> -->
-                        <!-- @if (@ViewBag.msg != null)
-                        {
-                            <p class="textvaliddesign">@ViewBag.msg</p>
-                        } -->
+                        <div *ngIf="registerform.controls['email'].invalid || registerform.controls['email'].errors">
+                            <div *ngIf="registerform.controls['email'].errors?.['required'] && registerform.controls['email'].touched" >
+                                This field is required.
+                              </div>
+                        </div>
+                       
                     </div>
                     <div class="form-group">
                         <label for="password" class="control-label inputlabeldesign" style="margin-left:135px;">Password</label><br />
                         <input id="password" type="password" class="inputdesign " formControlName="password"/>
+                        <div *ngIf="registerform.controls['password'].invalid || registerform.controls['password'].errors">
+                            <div *ngIf="registerform.controls['password'].errors?.['required'] && registerform.controls['password'].touched" >
+                                This field is required.
+                              </div>
+                        </div>
                        
                     </div>
                     <div class="form-group">
                         <label for="confirmpassword" class="control-label inputlabeldesign"style="margin-left:100px;">Confirm Password</label><br />
                         <input id="confirmpassword" type="password" class="inputdesign" formControlName="confirmpassword" />
+                        <div *ngIf="registerform.controls['confirmpassword'].invalid || registerform.controls['confirmpassword'].errors">
+                            <div *ngIf="registerform.controls['confirmpassword'].errors?.['required'] && registerform.controls['confirmpassword'].touched" >
+                                This field is required.
+                              </div>
+                              
+                        </div>
+                        <div *ngIf="!registerform.controls['confirmpassword'].errors?.['required'] && registerform.controls['confirmpassword'].touched" >
+                            <div *ngIf="registerform.controls['confirmpassword'].value!==registerform.controls['password'].value ">
+                                Password Mismatch
+    
+                              </div>
+                          </div>
+                       
                         <span  class="textvaliddesign">
                            
                         </span>
@@ -55,11 +56,12 @@
                     
                  
                     <div class="form-group" style="margin-left:90px;">
-                        <input type="submit" value="Register" style="background-color:darkgreen;color:white;width:140px;height:40px;margin-top:10px;border:none;" class="button-design" />
+                        <input type="submit" [disabled]="!registerform.valid" value="Register" style="background-color:darkgreen;color:white;width:140px;height:40px;margin-top:10px;border:none;" class="button-design" />
                     </div>
 
 
                 </div><br>
+                </div>
                 <a routerLink="/Login" style="margin-left:80px;margin-left:390px;font-size:15px;text-decoration:none;color:antiquewhite;">Already Registered? Sign in</a>
             </form>
         </div>

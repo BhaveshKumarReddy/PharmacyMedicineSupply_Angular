@@ -14,6 +14,7 @@ export class RegisterComponent {
   registerform:FormGroup=new FormGroup({});
   manager:Manager={name:"Bhavesh",email:"bhavesh@gmail.com",password:"Qwerty"};
   confirmpassword=""
+
   ngOnInit(){
     this.submitted=false
     this.registerform=new FormGroup({
@@ -30,6 +31,7 @@ export class RegisterComponent {
         Validators.required
       ])
     });
+    
 
   }
   constructor(private authserviceobj:AuthenticationServiceService,private route:Router){}
