@@ -58,6 +58,7 @@ export class RepresentativeScheduleComponent implements OnInit {
     console.log(scheduleObj.medicine);
     localStorage.setItem('medicine',scheduleObj.medicine);
     localStorage.setItem('scheduleStartDate',this.startDate);
+    localStorage.setItem('scheduleId',scheduleObj.id+"");
     this.router.navigateByUrl("/medicinedemand/"+scheduleObj.id);
   }
 

@@ -1,1 +1,12 @@
-<p>pharmacy-supply works!</p>
+<table>
+    <tr>
+        <th>Pharmacy Name</th>
+        <th>Medicine Name</th>
+        <th>Supply Count</th>
+    </tr>
+    <tr *ngFor="let schedule of supplyMedicines">
+        <td>{{schedule.pharmacyName}}</td>
+        <td>{{schedule.medicineName}}</td>
+        <td>{{schedule.supplyCount}}</td>
+    </tr>
+</table>

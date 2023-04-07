@@ -4,11 +4,11 @@
 
 <h2>Schedule</h2>
 
-<button *ngIf="currentDateSchedule.completed && !currentDateSchedule.supplied"  (click)="newPharmacySupply()">Supply</button>
+<button *ngIf="currentDateSchedule?.completed && !currentDateSchedule?.supplied"  (click)="newPharmacySupply()">Supply</button>
 
 <br/>
 
-<span *ngIf="currentDateSchedule.supplied" >
+<span *ngIf="currentDateSchedule?.supplied" >
     Supplied!
     <button (click)="pharmacySupply()">View Supplied Details</button>
 </span>

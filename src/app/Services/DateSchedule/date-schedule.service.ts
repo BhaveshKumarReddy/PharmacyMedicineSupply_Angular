@@ -19,7 +19,6 @@ export class DateScheduleService {
   //Method to get the Schedule from the API.
   getAllDateSchedule():Observable<DatesSchedule[]>
   {
-    console.log("date Schedule came");
     return this.http.get<DatesSchedule[]>(this.req+"api/DatesSchedule/",{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',

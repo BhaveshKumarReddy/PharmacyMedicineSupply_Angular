@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MedicineDemand } from 'src/Models/MedicineDemand';
+import { MedicineDemandService } from 'src/app/Services/MedicineDemand/medicine-demand.service';
 
 @Component({
   selector: 'app-medicinedemand',
@@ -14,7 +15,7 @@ export class MedicinedemandComponent implements OnInit {
   scheduleID:number;
   errorDemand:string="";
 
-  constructor(private route: ActivatedRoute, private router: Router){
+  constructor(private route: ActivatedRoute, private router: Router, private demandService: MedicineDemandService){
     this.scheduleID = parseInt(this.route.snapshot.paramMap.get("id")+"");
     this.medicines = (localStorage.getItem('medicine')).split(',') ;
     this.medicines.forEach(element => {
@@ -50,11 +51,17 @@ export class MedicinedemandComponent implements OnInit {
         }
       }
     }
+    var scheduleDate = localStorage.getItem('scheduleStartDate');
+    console.log(scheduleDate);
     if(this.errorDemand==""){
-      var scheduleDate = localStorage.getItem('scheduleStartDate');
-      console.log(scheduleDate);
-      //call service
-      //this.router.navigateByUrl("/supplyschedules/"+scheduleDate);
+      this.demandService.updateListOfMedicineDemand(parseInt(localStorage.getItem('scheduleId')),this.medicineDemand).subscribe(
+        data => {
+          this.router.navigateByUrl("/schedules/"+scheduleDate);
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
   }
 }
