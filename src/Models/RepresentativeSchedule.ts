@@ -4,7 +4,7 @@ export interface RepresentativeSchedule{
     treatingAilment:string;
     medicine:string;
     slot:string;
-    date:Date;
+    date:string;
     doctorContactNumber:string;
     id:number;
     status:Boolean;

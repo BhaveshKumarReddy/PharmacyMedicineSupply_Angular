@@ -1,6 +1,6 @@
 export interface DatesSchedule{
-    startDate:Date;
-    endDate:Date;
+    startDate:string;
+    endDate:string;
     countCompletedMeets:number;
     completed:Boolean;
     supplied:Boolean;
