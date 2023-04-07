@@ -13,7 +13,7 @@ import { RepresentativeSchedule } from 'src/Models/RepresentativeSchedule';
 })
 
 
-export class RepresentativeScheduleComponent {
+export class RepresentativeScheduleComponent implements OnInit {
 
   newSchedule:RepresentativeSchedule[]=[];
   DateSchedule:DatesSchedule[]=[];
@@ -25,15 +25,17 @@ export class RepresentativeScheduleComponent {
     
     this.startDate = this.route.snapshot.paramMap.get("date")+"";
     console.log(this.startDate);
+  }
 
-    this.schedules = []
+  ngOnInit(): void {
+    this.get_ScheduleByDate();
+    this.getDateScheduleByDate();
   }
 
   get_ScheduleByDate():void
   {
     this.RepScheduleObj.getScheduleByDate(this.startDate).subscribe(data=>{
-      this.Schedule=data;
-      console.log(typeof this.Schedule[0].date);
+      this.schedules=data;
     });
   }
 
@@ -49,11 +51,23 @@ export class RepresentativeScheduleComponent {
   }
 
   checkEligible(scheduleDate:string){
-    return scheduleDate<=formatDate(new Date(),'MM-dd-yyyy','en-US');
+    return formatDate(scheduleDate,'MM-dd-yyyy','en-US')<=formatDate(new Date(),'MM-dd-yyyy','en-US');
   }
 
-  OpenMedicineDemand(medicine: string){
-    localStorage.setItem('medicine',medicine);
-    this.router.navigateByUrl("/medicinedemand");
+  OpenMedicineDemand(scheduleObj:RepresentativeSchedule){
+    console.log(scheduleObj.medicine);
+    localStorage.setItem('medicine',scheduleObj.medicine);
+    localStorage.setItem('scheduleStartDate',this.startDate);
+    this.router.navigateByUrl("/medicinedemand/"+scheduleObj.id);
+  }
+
+  newPharmacySupply(){
+    localStorage.setItem('newSupply',true+"");
+    this.router.navigateByUrl("/supply/"+this.startDate);
+  }
+
+  pharmacySupply(){
+    localStorage.setItem('newSupply',false+"");
+    this.router.navigateByUrl("/supply/"+this.startDate);
   }
 }
