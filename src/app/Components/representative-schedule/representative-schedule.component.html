@@ -1,1 +1,36 @@
-<p>representative-schedule works!</p>
+<a routerLink="">Go Back</a>
+
+<br/>
+
+<h2>Schedule</h2>
+
+<a routerLink="pharmacysupply">Supply</a>
+
+<br/>
+
+<span>
+    Supplied!
+    <a routerLink="pharmacysupply">View Supplied Details</a>
+</span>
+
+<table>
+    <tr>
+        <th>Representative Name</th>
+        <th>Doctor Name</th>
+        <th>Ailment</th>
+        <th>Contact Number</th>
+        <th>Date</th>
+        <th>Slot</th>
+    </tr>
+    <tr *ngFor="let schedule of schedules">
+        <td>{{schedule.representativeName}}</td>
+        <td>{{schedule.doctorName}}</td>
+        <td>{{schedule.treatingAilment}}</td>
+        <td>{{schedule.doctorContactNumber}}</td>
+        <td>{{schedule.date | date}}</td>
+        <td>{{schedule.slot}}</td>
+        <button (click)="OpenMedicineDemand(schedule.medicine)" *ngIf="!schedule.status && checkEligible(schedule.date)">Enter Demand</button>
+        <td *ngIf="!schedule.status && !checkEligible(schedule.date)">Pending</td>
+        <td *ngIf="schedule.status">Demand Submitted</td>
+    </tr>
+</table>
