@@ -16,10 +16,10 @@
         <div class="box-for-span">
         </div>
     </div>
-    <div *ngIf="local.getItem('token')==null" style="border-top: 2px dashed white" class="right-box text-center">
+    <div *ngIf="local.getItem('token')!=null" style="border-top: 2px dashed white" class="right-box text-center">
         <p routerLink="provideschedule" style="color:white; margin: 40px 15px 15px 15px;" class="h4-rightBox">View Schedules</p>
         <p routerLink="provideschedule" style="color:white; margin: 15px;" class="h4-rightBox">Add Schedule</p>
-        <p routerLink="stocks" style="color:white; margin: 15px;" class="h4-rightBox">View Medicine Stock</p>
+        <p routerLink="medicinestocks" style="color:white; margin: 15px;" class="h4-rightBox">View Medicine Stock</p>
     </div>
 </div>
 

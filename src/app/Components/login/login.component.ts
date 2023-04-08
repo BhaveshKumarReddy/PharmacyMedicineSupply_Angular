@@ -33,10 +33,8 @@ login(){
   this.managerlogin.password=user.password;
   this.authserviceobj.ManagerLogin(this.managerlogin).subscribe({
     next: (data:any)=>{
-      console.log(data)
       this.token = data.token
       localStorage.setItem("token",this.token)
-      console.log(this.token)
       this.route.navigateByUrl("/")
     },
     error: (error) => {

@@ -21,8 +21,8 @@
             <th>Status</th>
         </tr>
         <tr>
-            <td>{{item.startDate}}</td>
-            <td>{{item.endDate}}</td>
+            <td>{{item.startDate | date}}</td>
+            <td>{{item.endDate | date}}</td>
             <td>{{item.completed}}</td>
             <td><button  [routerLink]="['/schedules', item.startDate]">Go To Schedules</button></td>
         </tr>

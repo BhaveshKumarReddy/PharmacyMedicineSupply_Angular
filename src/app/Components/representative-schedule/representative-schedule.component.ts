@@ -43,14 +43,12 @@ export class RepresentativeScheduleComponent implements OnInit {
       data.forEach(element => {
         if(formatDate(element.startDate,'MM-dd-yyyy','en-US') == formatDate(this.startDate,'MM-dd-yyyy','en-US')){
           this.currentDateSchedule = element;
-          console.log(this.currentDateSchedule);
         }
       })
     });
   }
 
   checkEligible(scheduleDate:string){
-    console.log(formatDate(scheduleDate,'MM-dd-yyyy','en-US')<=formatDate("2024-01-01",'MM-dd-yyyy','en-US'));
     return formatDate(scheduleDate,'MM-dd-yyyy','en-US')<=formatDate(new Date(),'MM-dd-yyyy','en-US');
   }
 

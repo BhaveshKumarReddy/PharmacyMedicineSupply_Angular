@@ -58,10 +58,15 @@ export class RegisterComponent {
       if(data){
         this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data=>{
           if(data){
-            this.authserviceobj.createManagerDetails(this.manager).subscribe(data=>{
-
-              this.manager=data;
-              console.log(data)
+            this.authserviceobj.createManagerDetails(this.manager).subscribe({
+              next: (data:any)=>{
+                localStorage.setItem("token",data.token)
+                this.manager=data;
+                this.route.navigateByUrl("/")
+              },
+              error: (error) => {
+                console.log(error.error);
+              }
             })
           }
           else{

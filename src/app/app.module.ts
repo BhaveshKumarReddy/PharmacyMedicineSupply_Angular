@@ -12,6 +12,7 @@ import { MedicinedemandComponent } from './Components/medicinedemand/medicinedem
 import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-supply.component';
 import { HomeComponent } from './Components/home/home.component';
 import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay/medicinestockdisplay.component';
+import { LogoutComponent } from './Components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay
     MedicinedemandComponent,
     PharmacySupplyComponent,
     HomeComponent,
-    MedicinestockdisplayComponent
+    MedicinestockdisplayComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
