@@ -9,15 +9,38 @@ import { ManagerLogin } from 'src/Models/ManagerLogin';
 export class AuthenticationServiceService {
 
   constructor(private http:HttpClient) { }
-  req="https://localhost:7287/api/Authorization/Register"
+  reqtoregister="https://localhost:7287/api/Authorization/Register"
+  reqtocheckemail="https://localhost:7287/api/Manager/CheckingEmail?email="
+  reqtocheckname="https://localhost:7287/api/Manager/CheckingName?name="
+
 createManagerDetails(manager:Manager):Observable<Manager>
 {
-  return this.http.post<Manager>(this.req,manager,{
+  return this.http.post<Manager>(this.reqtoregister,manager,{
     headers:new HttpHeaders({
       'Content-Type':'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin':'*',
       'Access-Control-Allow-Method':'*'
       
+    })
+  });
+}
+checkMail(mail:string):Observable<Boolean>{
+ 
+  return this.http.post<Boolean>(this.reqtocheckemail+mail,{
+    headers:new HttpHeaders({
+      'Content-Type':'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Method':'*'
+    })
+  });
+}
+checkUniqueName(name:string):Observable<Boolean>{
+ 
+  return this.http.post<Boolean>(this.reqtocheckname+name,{
+    headers:new HttpHeaders({
+      'Content-Type':'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Method':'*'
     })
   });
 }

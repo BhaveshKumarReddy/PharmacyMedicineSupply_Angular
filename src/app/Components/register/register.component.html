@@ -7,15 +7,18 @@
                     <br><br>
                     <div class="form-group">
                         <label for="name" class="control-label inputlabeldesign" style="margin-left:150px;">Name</label><br />
-                        <input id="name" type="text"class=" inputdesign" formControlName="name"/>
+                        <input (keyup)="clearerrormsgforname()" id="name" type="text"class=" inputdesign" formControlName="name"/>
                         <div *ngIf="registerform.controls['name'].invalid || registerform.controls['name'].errors">
                             <div *ngIf="registerform.controls['name'].errors?.['required'] && registerform.controls['name'].touched" >
                                 This field is required.                              
                             </div>
                     </div> 
+                    <div *ngIf="nameerrormsg!=''">
+                        Username must be unique
+                    </div>
                     <div class="form-group">
                         <label for="email" class="control-label inputlabeldesign" style="margin-left:140px;">Mail Id</label><br />
-                        <input id="email" class="inputdesign" type="email" formControlName="email"/>
+                        <input (keyup)="clearerrormsgformail()" id="email" class="inputdesign" type="email" formControlName="email"/>
                         <div *ngIf="registerform.controls['email'].invalid || registerform.controls['email'].errors">
                             <div *ngIf="registerform.controls['email'].errors?.['required'] && registerform.controls['email'].touched" >
                                 This field is required.
@@ -25,6 +28,9 @@
                                     Email already Exists
                                 </div>
                             <!-- </div> -->
+                        </div>
+                        <div *ngIf="mailerrormsg!=''">
+                            Mail Id already Exists
                         </div>
                        
                     </div>
