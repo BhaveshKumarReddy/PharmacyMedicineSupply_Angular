@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators,AbstractControl, ValidatorFn, ValidationErrors} from '@angular/forms';
 import { Manager } from 'src/Models/Manager';
 import { AuthenticationServiceService } from 'src/app/Services/Authentication/authentication-service.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  mailerrormsg=""
+  nameerrormsg=""
   submitted=false
   registerform:FormGroup=new FormGroup({});
   manager:Manager={name:"Bhavesh",email:"bhavesh@gmail.com",password:"Qwerty"};
@@ -34,18 +36,50 @@ export class RegisterComponent {
     
 
   }
+  
   constructor(private authserviceobj:AuthenticationServiceService,private route:Router){}
-
+  clearerrormsgformail(){
+    this.mailerrormsg=""
+  }
+  clearerrormsgforname(){
+    this.nameerrormsg=""
+  }
   register(){
+  
     this.submitted=true
     let user={"name":this.registerform.value.name,"email":this.registerform.value.email,"password":this.registerform.value.password,"confirmpassword":this.registerform.value.confirmpassword};
     this.manager.name=user.name;
     this.manager.email=user.email;
     this.manager.password=user.password;
-    this.authserviceobj.createManagerDetails(this.manager).subscribe(data=>{
-      this.manager=data;
-      console.log(data)
-    })
+    this.authserviceobj.checkMail(this.manager.email).subscribe(data=>{
+      if(data){
+        this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data=>{
+          if(data){
+            this.authserviceobj.createManagerDetails(this.manager).subscribe(data=>{
+
+              this.manager=data;
+              console.log(data)
+            })
+          }
+          else{
+            this.nameerrormsg="Username Should be unique";
+          }
+        })
+        
+      }
+      else{
+        this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data=>{
+          if(!data){
+            this.nameerrormsg="Username Should be unique";
+
+          }
+        this.mailerrormsg="Mail Already Exists";
+      })
+      
+    }
+  })
+
+    
 
   }
 }
