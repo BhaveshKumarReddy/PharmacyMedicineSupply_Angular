@@ -7,6 +7,7 @@ import { RepresentativeScheduleComponent } from './Components/representative-sch
 import { MedicinedemandComponent } from './Components/medicinedemand/medicinedemand.component';
 import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-supply.component';
 import { HomeComponent } from './Components/home/home.component';
+import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay/medicinestockdisplay.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'schedules/:date',component:RepresentativeScheduleComponent},
   {path:'medicinedemand/:id',component:MedicinedemandComponent},
-  {path:'supply/:date',component:PharmacySupplyComponent}
+  {path:'supply/:date',component:PharmacySupplyComponent},
+  {path:'medicinestocks',component:MedicinestockdisplayComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,35 @@
+
+<div class="body">
+  <section>
+    <br>
+    <h1>Medicine Stocks</h1>
+    <br>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+            <tr>
+              <th>Name</th>
+              <th>Chemical Composition</th>
+              <th>Target Ailment</th>
+              <th>Number Of Tablets In Stock</th>
+            </tr>
+          </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody *ngFor="let item of medicinestocklist">
+            <tr>
+              <th>{{item.name}}</th>
+              <td>{{item.chemicalComposition}}</td>
+              <td>{{item.targetAilment}}</td>
+              <td>{{item.numberOfTabletsInStock}}</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </section>
+  <br>
+  <br>
+</div>
+  

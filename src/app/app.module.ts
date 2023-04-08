@@ -11,6 +11,7 @@ import { RepresentativeScheduleComponent } from './Components/representative-sch
 import { MedicinedemandComponent } from './Components/medicinedemand/medicinedemand.component';
 import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-supply.component';
 import { HomeComponent } from './Components/home/home.component';
+import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay/medicinestockdisplay.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './Components/home/home.component';
     RepresentativeScheduleComponent,
     MedicinedemandComponent,
     PharmacySupplyComponent,
-    HomeComponent
+    HomeComponent,
+    MedicinestockdisplayComponent
   ],
   imports: [
     BrowserModule,
