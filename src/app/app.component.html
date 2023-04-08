@@ -2,10 +2,38 @@
 
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 nav-box" style="background-color: #fefefe ">
-            Pharmacy Supply App
-            <br/>
-            <br/>
-            <br/>
+            <div class="container" style="width:60%;margin-left:3%">
+                <h2 style="color: white; border-bottom: solid">Pharma <span style="font-size: 18px; color: #e6e6e6">MANAGEMENT SYSTEM <i class="fa fa-medkit"></i></span></h2>
+            </div>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul style="justify-content:space-evenly" class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: #e6e6e6; font-weight: bold; font-size: 15px" routerLink="">
+                                <i style="font-size:21px" class="fa fa-home"></i> Home
+                            </a>
+                        </li>
+                        <span *ngIf="local.getItem('token')==null; then not_loggedIn; else is_loggedIn"></span>
+                        <ng-template #not_loggedIn>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #e6e6e6; font-weight: bold; font-size: 15px " routerLink="login">
+                                    <i style="font-size:21px" class="fa fa-user"></i> Login
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #e6e6e6; font-weight: bold; font-size: 15px " routerLink="register">
+                                    <i class='fas fa-external-link-alt' style='font-size:21px'></i> Register
+                                </a>
+                            </li>
+                        </ng-template>
+                        <ng-template #is_loggedIn>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: red; font-weight: bold; font-size: 15px " routerLink="logout">
+                                    <i class='fas fa-reply-all' style='font-size:21px;color:red'></i> Logout
+                                </a>
+                            </li>
+                        </ng-template>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -16,6 +44,9 @@
     </div>
 
     <footer class="border-top footer text-muted" style="background-color: #ebebeb">
+        <div class="container">
+            <h4 class="nav-link" style="font-size:18px;color:#f2f2f2;margin-top:4px;margin-right:15px">&copy; Pharma<span style="font-size:21px;color:#048a8d">M</span>anagementSystem</h4>
+        </div>
     </footer>
 </div>
 

@@ -4,6 +4,7 @@ html{
 }
   
 body{
-    margin-bottom: 60px;
-    background-color: white;
+    margin-bottom: 60px;  
+    background-image: radial-gradient(circle, #051937, #192945, #2b3a53, #3e4c61, #515e70);     
+    background-image: linear-gradient(to right bottom, #051937, #192945, #2b3a53, #3e4c61, #515e70);
 }

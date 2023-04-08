@@ -1,9 +1,18 @@
-<a routerLink="login">Login</a>
-
-<hr/>
-
-<a routerLink="register">Register</a>
-
-<hr/>
-
-<a routerLink="provideschedule">Schedules</a>
+<div class="main-box">
+    <div class="left-box text-center">
+        <h1 style="color: #d9d9d9; font-style: italic; font-weight: bold" class="display-3">
+            Pharmacy Supply 
+            <br /><span style="color: #d9d9d9; font-weight: bold" class="display-4">
+                Management System!<br/>
+                <i class="fas fa-medkit"></i>
+            </span>
+        </h1>
+        <div class="box-for-span">
+        </div>
+    </div>
+    <div *ngIf="local.getItem('token')==null" style="border-top: 2px dashed white" class="right-box text-center">
+        <p routerLink="provideschedule" style="color:white; margin: 40px 15px 15px 15px;" class="h4-rightBox">View Schedules</p>
+        <p routerLink="provideschedule" style="color:white; margin: 15px;" class="h4-rightBox">Add Schedule</p>
+        <p routerLink="stocks" style="color:white; margin: 15px;" class="h4-rightBox">View Medicine Stock</p>
+    </div>
+</div>

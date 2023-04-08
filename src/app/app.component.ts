@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PharmacyMedicineSupply_Angular';
+  local:any;
+  constructor(){
+    this.local = localStorage;
+  }
 }
