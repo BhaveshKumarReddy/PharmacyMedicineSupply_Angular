@@ -1,0 +1,34 @@
+<div class="row">
+    <br>
+    <div class="col-md-4 outerdivform">
+        <form [formGroup]="loginform" (ngSubmit)="login()">
+        <div class="innerdivform">
+            <br><br>
+            <div *ngIf="invalidCredentialMessage!=''">
+                {{invalidCredentialMessage}}
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label inputlabeldesign" style="margin-left:140px;">Mail Id</label><br />
+            <input id="email" class="inputdesign" type="email" formControlName="email"/>
+            <div *ngIf="loginform.controls['email'].invalid || loginform.controls['email'].errors">
+                <div *ngIf="loginform.controls['email'].errors?.['required'] && loginform.controls['email'].touched">
+                    This field is required.
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="control-label inputlabeldesign" style="margin-left:140px;">Password</label><br />
+            <input id="password" class="inputdesign" type="password" formControlName="password"/>
+            <div *ngIf="loginform.controls['password'].invalid || loginform.controls['password'].errors">
+                <div *ngIf="loginform.controls['password'].errors?.['required'] && loginform.controls['password'].touched">
+                    This field is required.
+                </div>
+            </div>
+            </div>
+            <div class="form-group" style="margin-left:90px;">
+                <input type="submit" [disabled]="!loginform.valid" value="Login" style="background-color:darkgreen;color:white;width:140px;height:40px;margin-top:10px;border:none;" class="button-design" />
+            </div>
+        </div>
+        </form>
+    </div>
+</div>

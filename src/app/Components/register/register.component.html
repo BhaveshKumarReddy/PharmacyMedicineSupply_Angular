@@ -20,6 +20,11 @@
                             <div *ngIf="registerform.controls['email'].errors?.['required'] && registerform.controls['email'].touched" >
                                 This field is required.
                               </div>
+                            <!-- <div *ngIf="registerform.controls['email'].invalid || registerform.controls['email'].errors"> -->
+                                <div *ngIf="registerform.controls['email'].errors?.['emailAlreadyExists'] && registerform.controls['email'].touched">
+                                    Email already Exists
+                                </div>
+                            <!-- </div> -->
                         </div>
                        
                     </div>
