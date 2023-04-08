@@ -22,7 +22,7 @@ scheduleSlot(slotdate:string):Observable<any>
     })
   });
 }
-checkAvailability(slotdate:string):Observable<any>
+checkAvailability(slotdate:string):Observable<boolean>
 {
   return this.http.get<any>(this.reqtocheckavailability+slotdate,{
     headers:new HttpHeaders({
