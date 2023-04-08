@@ -13,14 +13,13 @@ export class AuthenticationServiceService {
   reqtocheckemail="https://localhost:7287/api/Manager/CheckingEmail?email="
   reqtocheckname="https://localhost:7287/api/Manager/CheckingName?name="
 
-createManagerDetails(manager:Manager):Observable<Manager>
+createManagerDetails(manager:Manager)
 {
-  return this.http.post<Manager>(this.reqtoregister,manager,{
+  return this.http.post(this.reqtoregister,manager,{
     headers:new HttpHeaders({
       'Content-Type':'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin':'*',
       'Access-Control-Allow-Method':'*'
-      
     })
   });
 }

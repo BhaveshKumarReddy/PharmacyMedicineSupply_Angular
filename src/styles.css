@@ -5,6 +5,6 @@ html{
   
 body{
     margin-bottom: 60px;  
-    background-image: radial-gradient(circle, #051937, #192945, #2b3a53, #3e4c61, #515e70);     
-    background-image: linear-gradient(to right bottom, #051937, #192945, #2b3a53, #3e4c61, #515e70);
+    background-image: radial-gradient(circle, #c7d1e1, #506995, #8497ba, #929fb3, #515e70);     
+    background-image: linear-gradient(to right bottom, #afb8c7, #a9b1bf, #a0acc0, #a9b6ca, #b7c3d3);
 }

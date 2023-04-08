@@ -8,7 +8,10 @@ import { MedicineStock } from 'src/Models/MedicineStock';
 })
 export class MedicinestockdisplayService {
 
-  constructor(private http:HttpClient) { }
+  auth_token:string;
+  constructor(private http:HttpClient) {
+    this.auth_token = localStorage.getItem('token');
+  }
   reqestToManagerDetails="https://localhost:7287/api/MedicineStocks"
 
   fetchMedicineStockDetails():Observable<MedicineStock[]>
@@ -17,8 +20,8 @@ export class MedicinestockdisplayService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
-        
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     })
   }
