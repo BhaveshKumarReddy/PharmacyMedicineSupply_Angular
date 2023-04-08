@@ -10,13 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+
   mailerrormsg=""
   nameerrormsg=""
   submitted=false
   registerform:FormGroup=new FormGroup({});
   manager:Manager={name:"Bhavesh",email:"bhavesh@gmail.com",password:"Qwerty"};
   confirmpassword=""
-
+  constructor(private authserviceobj:AuthenticationServiceService,private route:Router){}
+  
+  
   ngOnInit(){
     this.submitted=false
     this.registerform=new FormGroup({
@@ -37,13 +40,13 @@ export class RegisterComponent {
 
   }
   
-  constructor(private authserviceobj:AuthenticationServiceService,private route:Router){}
   clearerrormsgformail(){
     this.mailerrormsg=""
   }
   clearerrormsgforname(){
     this.nameerrormsg=""
   }
+  
   register(){
   
     this.submitted=true
