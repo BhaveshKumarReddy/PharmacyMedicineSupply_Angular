@@ -1,0 +1,21 @@
+<h3>Medicine Stocks</h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Chemical Composition</th>
+        <th scope="col">Target Ailment</th>
+        <th scope="col">Number Of Tablets In Stock</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of medicinestocklist">
+      <tr>
+        <th scope="row">{{item.name}}</th>
+        <td>{{item.chemicalComposition}}</td>
+        <td>{{item.targetAilment}}</td>
+        <td>{{item.numberOfTabletsInStock}}</td>
+      </tr>
+     
+    </tbody>
+  </table>

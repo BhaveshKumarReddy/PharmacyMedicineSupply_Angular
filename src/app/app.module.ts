@@ -10,6 +10,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { RepresentativeScheduleComponent } from './Components/representative-schedule/representative-schedule.component';
 import { MedicinedemandComponent } from './Components/medicinedemand/medicinedemand.component';
 import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-supply.component';
+import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay/medicinestockdisplay.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-s
     LoginComponent,
     RepresentativeScheduleComponent,
     MedicinedemandComponent,
-    PharmacySupplyComponent
+    PharmacySupplyComponent,
+    MedicinestockdisplayComponent
   ],
   imports: [
     BrowserModule,
