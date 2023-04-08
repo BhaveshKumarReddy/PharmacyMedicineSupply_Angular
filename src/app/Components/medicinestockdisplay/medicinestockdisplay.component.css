@@ -8,6 +8,7 @@ h1{
     margin-bottom: 15px;
   }
   table{
+    table-layout: fixed;
     width:100%;
     table-layout:fixed;
   }
@@ -17,7 +18,7 @@ h1{
   .tbl-content{
     overflow-x:auto;
     margin-top: 0px;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 2px solid rgba(255,255,255,0.3);
   }
   th{
     padding: 20px 15px;
