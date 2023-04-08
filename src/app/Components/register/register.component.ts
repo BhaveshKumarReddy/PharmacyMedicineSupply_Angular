@@ -15,8 +15,8 @@ export class RegisterComponent {
   nameerrormsg=""
   submitted=false
   registerform:FormGroup=new FormGroup({});
-  manager:Manager={name:"Bhavesh",email:"bhavesh@gmail.com",password:"Qwerty"};
-  confirmpassword=""
+  manager:Manager={name:"Temporary",email:"temp@gmail.com",password:"123456"};
+  confirmpassword="123456"
   constructor(private authserviceobj:AuthenticationServiceService,private route:Router){}
   
   
@@ -27,7 +27,7 @@ export class RegisterComponent {
         Validators.required
       ]),
       email:new FormControl(this.manager.email,[
-        Validators.required
+        Validators.required, Validators.email
       ]),
       password:new FormControl(this.manager.password,[
         Validators.required

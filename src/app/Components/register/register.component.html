@@ -20,6 +20,9 @@
                         <label for="email" class="control-label inputlabeldesign" style="margin-left:140px;">Mail Id</label><br />
                         <input (keyup)="clearerrormsgformail()" id="email" class="inputdesign" type="email" formControlName="email"/>
                         <div *ngIf="registerform.controls['email'].invalid || registerform.controls['email'].errors">
+                            <div *ngIf="registerform.controls['email'].errors?.['email'] && registerform.controls['email'].touched">
+                                Email not valid
+                            </div>
                             <div *ngIf="registerform.controls['email'].errors?.['required'] && registerform.controls['email'].touched" >
                                 This field is required.
                               </div>

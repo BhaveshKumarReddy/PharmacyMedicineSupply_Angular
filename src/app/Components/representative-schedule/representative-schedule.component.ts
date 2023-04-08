@@ -22,8 +22,7 @@ export class RepresentativeScheduleComponent implements OnInit {
   schedules: RepresentativeSchedule[];
 
   constructor(private RepScheduleObj:ScheduleService, private route:ActivatedRoute, private DateScheduleObj:DateScheduleService, private router: Router){
-    
-    this.startDate = this.route.snapshot.paramMap.get("date")+"";
+    this.startDate = formatDate(this.route.snapshot.paramMap.get("date"),'MM-dd-yyyy','en-US');
     console.log(this.startDate);
   }
 
@@ -42,7 +41,7 @@ export class RepresentativeScheduleComponent implements OnInit {
   getDateScheduleByDate():void{
     this.DateScheduleObj.getAllDateSchedule().subscribe(data =>{
       data.forEach(element => {
-        if(formatDate(element.startDate,'MM-dd-yyyy','en-US') == this.startDate){
+        if(formatDate(element.startDate,'MM-dd-yyyy','en-US') == formatDate(this.startDate,'MM-dd-yyyy','en-US')){
           this.currentDateSchedule = element;
           console.log(this.currentDateSchedule);
         }
@@ -51,6 +50,7 @@ export class RepresentativeScheduleComponent implements OnInit {
   }
 
   checkEligible(scheduleDate:string){
+    console.log(formatDate(scheduleDate,'MM-dd-yyyy','en-US')<=formatDate("2024-01-01",'MM-dd-yyyy','en-US'));
     return formatDate(scheduleDate,'MM-dd-yyyy','en-US')<=formatDate(new Date(),'MM-dd-yyyy','en-US');
   }
 

@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 import { RepresentativeSchedules } from 'src/Models/RepresentativeSchedules';
 import { formatDate } from '@angular/common';
 import { BookeddatesService } from 'src/app/Services/BookedDates/bookeddates.service';
-import { dateValidator } from 'src/app/Shared/past-day.validator';
+import { DaydateValidator, dateValidator } from 'src/app/Shared/past-day.validator';
 import { BookedDates } from 'src/Models/BookedDates';
+
 @Component({
   selector: 'app-providescheduledate',
   templateUrl: './providescheduledate.component.html',
@@ -23,7 +24,7 @@ listofscheduledresults:RepresentativeSchedules[]=[]
 ngOnInit(){
   this.scheduleform=new FormGroup({
     scheduledate:new FormControl(this.date,[
-      Validators.required,dateValidator()
+      Validators.required,dateValidator(), DaydateValidator()
     ]),
   })
    this.bookedServObj.getAllBookedDates().subscribe(data=>{
@@ -31,33 +32,21 @@ ngOnInit(){
    })
 }
 constructor(private scheduleobj:ProvideScheduleDateService,private route:Router,private bookedServObj:BookeddatesService){}
-schedule(){
- 
-  let scheduledate1={"startDate":this.scheduleform.value.scheduledate};
 
-  const date=new Date(scheduledate1.startDate);
-this.datetoschedule=formatDate(scheduledate1.startDate,'dd-MM-yyyy','en-US');
-
-
-let day=date.getDay();
-this.scheduleobj.checkAvailability(this.datetoschedule).subscribe(data=>{
-  if(day==6){
-    alert("Please give a date other than Sunday");
-  }
-  else if(!data){
-    alert("Already Booked ! Please pick another date")
-  }
-  else{
-    this.scheduleobj.scheduleSlot(this.datetoschedule).subscribe(data=>{
-      this.listofscheduledresults=data;
-      alert("Booked Successfully !");
+schedule()
+  {
+    let scheduledate1={"startDate":this.scheduleform.value.scheduledate};
+    this.datetoschedule=formatDate(scheduledate1.startDate,'dd-MM-yyyy','en-US');
+    this.scheduleobj.checkAvailability(this.datetoschedule).subscribe(data=>{
+      if(!data){
+        alert("Already Booked ! Please pick another date")
+      }
+      else{
+        this.scheduleobj.scheduleSlot(this.datetoschedule).subscribe(data=>{
+          this.listofscheduledresults=data;
+          alert("Booked Successfully !");
+        })
+      }
     })
   }
-})
-
-
-
-}
-
-
 }

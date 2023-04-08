@@ -14,15 +14,15 @@ export class LoginComponent {
 token=''
 invalidCredentialMessage: string="";
 loginform:FormGroup= new FormGroup({});
-managerlogin:ManagerLogin={email:"bhavesh@gmail.com",password:"Qwerty"};
+managerlogin:ManagerLogin={email:"b@gmail.com",password:"123456"};
 constructor(private authserviceobj:AuthenticationServiceService, private route:Router, private https:HttpClient){}
 ngOnInit(){
   this.loginform= new FormGroup({
     email: new FormControl(this.managerlogin.email,[
-      Validators.required
+      Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.email
     ]),
     password: new FormControl(this.managerlogin.password,[
-      Validators.required
+      Validators.required, Validators.minLength(6)
       ])
     });
   }
@@ -37,11 +37,12 @@ login(){
       this.token = data.token
       localStorage.setItem("token",this.token)
       console.log(this.token)
+      this.route.navigateByUrl("/")
     },
     error: (error) => {
       console.log(error.error);
       this.invalidCredentialMessage="Invalid Credentials"
-      this.route.navigateByUrl("/Login")
+      this.route.navigateByUrl("/login")
     }
   })
   

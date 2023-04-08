@@ -1,14 +1,12 @@
 <div>
-<div>
     <form [formGroup]="scheduleform" (ngSubmit)="schedule()">
         <label>Date</label>
         <input type="date" formControlName="scheduledate">
         <div *ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
             <small *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is required</small>
             <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should not be enterd</small>
-            
+            <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDay']">Sunday should not be enterd</small>
         </div>
-
         <input type="submit" [disabled]="!scheduleform.valid" value="Schedule">
     </form>
 </div>
@@ -23,9 +21,8 @@
             <td>{{item.startDate}}</td>
             <td>{{item.endDate}}</td>
             <td>{{item.completed}}</td>
-            <td><button  [routerLink]="['/Schedules', item.startDate]">Go To Schedules</button></td>
+            <td><button  [routerLink]="['/schedules', item.startDate]">Go To Schedules</button></td>
         </tr>
         
     </table>
-</div>
 </div>
