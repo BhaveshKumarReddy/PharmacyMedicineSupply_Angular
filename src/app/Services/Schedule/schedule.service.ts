@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RepresentativeSchedule } from 'src/Models/RepresentativeSchedule';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { formatDate } from '@angular/common';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ScheduleService {
+  constructor(private http:HttpClient) { }
+  
+  req:string="https://localhost:7287/api/MedicalRepresentativeSchedule/";
+
+  getScheduleByDate(startDate:string):Observable<RepresentativeSchedule[]>
+  {
+    var formattedDate = formatDate(startDate,'dd-MM-yyyy','en-US');
+    return this.http.get<RepresentativeSchedule[]>(this.req+"GetScheduleByDate/"+formattedDate,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
+
+  createSchedule(startDate:string):Observable<RepresentativeSchedule[]>
+  {
+    console.log("creating schedule");
+    return this.http.get<RepresentativeSchedule[]>(this.req+"CreateSchedule/"+startDate,{
+      headers:new HttpHeaders({
+        'Content-Type':'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Method':'*'
+      })
+    });
+  }
+}

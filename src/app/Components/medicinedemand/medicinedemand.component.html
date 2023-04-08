@@ -1,0 +1,19 @@
+<p>Alert! Once you submit, you can't come back</p>
+
+<form #demandForm="ngForm" (submit)="submitDemand()">
+
+    <div *ngFor="let medicine of medicineDemand; index as i">
+        <p>{{medicine.name}}</p>
+        <input (keyup)="errorDemand=''" #demand=ngModel name="demand" [(ngModel)]="medicineDemand[i].demandCount" type="number" required min="0" max="100"/>
+    </div>
+
+    <span *ngIf="errorDemand!=''">{{errorDemand}}</span>
+    <input [disabled]="errorDemand!='' || demandForm.invalid" type="submit" value="Submit"/>
+
+</form>
+
+
+<!--     
+<span *ngIf="demandForm.controls['demand']?.errors?.['required']">Demand is Required</span>
+<span *ngIf="demandForm.controls['demand']?.errors?.['min']">Demand Can't be in negative</span>
+<span *ngIf="demandForm.controls['demand']?.errors?.['max']">Demand Can't be more than 100</span> -->

@@ -1,0 +1,36 @@
+<a routerLink="">Go Back</a>
+{{startDate | date}}
+<br/>
+
+<h2>Schedule</h2>
+
+<button *ngIf="currentDateSchedule?.completed && !currentDateSchedule?.supplied"  (click)="newPharmacySupply()">Supply</button>
+
+<br/>
+
+<span *ngIf="currentDateSchedule?.supplied" >
+    Supplied!
+    <button (click)="pharmacySupply()">View Supplied Details</button>
+</span>
+
+<table>
+    <tr>
+        <th>Representative Name</th>
+        <th>Doctor Name</th>
+        <th>Ailment</th>
+        <th>Contact Number</th>
+        <th>Date</th>
+        <th>Slot</th>
+    </tr>
+    <tr *ngFor="let schedule of schedules">
+        <td>{{schedule.representativeName}}</td>
+        <td>{{schedule.doctorName}}</td>
+        <td>{{schedule.treatingAilment}}</td>
+        <td>{{schedule.doctorContactNumber}}</td>
+        <td>{{schedule.date | date}}</td>
+        <td>{{schedule.slot}}</td>
+        <button (click)="OpenMedicineDemand(schedule)" *ngIf="!schedule.status && checkEligible(schedule.date)">Enter Demand</button>
+        <td *ngIf="!schedule.status && checkEligible(schedule.date)==false">Pending</td>
+        <td *ngIf="schedule.status">Demand Submitted</td>
+    </tr>
+</table>
