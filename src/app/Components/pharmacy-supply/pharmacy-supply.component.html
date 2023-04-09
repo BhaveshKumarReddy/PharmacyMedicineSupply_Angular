@@ -1,28 +1,7 @@
-
-<div>
-    <input class="inputFilter" [(ngModel)]="searchValue" placeholder="Search by pharmacy" />
-</div>
-<table>
-    <tr>
-        <th>Pharmacy Name</th>
-        <th>Medicine Name</th>
-        <th>Supply Count</th>
-    </tr>
-    <tr *ngFor="let schedule of supplyMedicines | FilterByPharmacy:searchValue">
-        <td>{{schedule.pharmacyName}}</td>
-        <td>{{schedule.medicineName}}</td>
-        <td>{{schedule.supplyCount}}</td>
-    </tr>
-</table>
-<nav aria-label="...">
-    <ul class="pagination">
-      <li (click)="changePage(i+1)" class="page-item page-li" *ngFor="let page of [].constructor(totalPages); index as i">
-        <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage" >{{i+1}}</a>
-      </li>
-    </ul>
-</nav>
-
 <div class="body">
+    <div>
+        <input class="inputFilter" [(ngModel)]="searchValue" placeholder="Search by pharmacy" />
+    </div>    
     <section>
         <br>
         <h1>Pharmacy Supply Details</h1>
@@ -53,5 +32,12 @@
     </section>
     <br>
     <br>
+    <nav aria-label="...">
+        <ul class="pagination">
+          <li (click)="changePage(i+1)" class="page-item page-li" *ngFor="let page of [].constructor(totalPages); index as i">
+            <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage" >{{i+1}}</a>
+          </li>
+        </ul>
+    </nav>
 </div>
 
