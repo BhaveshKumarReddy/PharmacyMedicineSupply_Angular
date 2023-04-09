@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { DaydateValidator, dateValidator } from 'src/app/Shared/past-day.validator';
 import { DatesSchedule } from 'src/Models/DatesSchedule';
 import { RepresentativeSchedule } from 'src/Models/RepresentativeSchedule';
@@ -21,6 +21,8 @@ export class ProvidescheduledateComponent {
   listofbookeddates:DatesSchedule[]=[]
   date:Date=new Date()
   listofscheduledresults:RepresentativeSchedule[]=[]
+  maxDate: string = formatDate(new Date("12-31-2023"),'yyyy-MM-dd','en-US');
+
   ngOnInit(){
       this.scheduleform=new FormGroup({
         scheduledate:new FormControl(this.date,[
@@ -51,3 +53,4 @@ schedule()
     })
   }
 }
+

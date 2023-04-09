@@ -15,6 +15,7 @@ import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay
 import { LogoutComponent } from './Components/logout/logout.component';
 import { FilterByStatus } from './Pipes/DateSchedulePipe';
 import { FilterByNames } from './Pipes/RepresentativeSchedulePipe';
+import { FilterByPharmacy } from './Pipes/PharmacySupplyPipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FilterByNames } from './Pipes/RepresentativeSchedulePipe';
     MedicinestockdisplayComponent,
     LogoutComponent,
     FilterByStatus,
-    FilterByNames
+    FilterByNames,
+    FilterByPharmacy
   ],
   imports: [
     BrowserModule,

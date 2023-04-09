@@ -38,12 +38,32 @@ h1{
   }
   
   .body{
+    margin-top:-40px !important;
     background: -webkit-linear-gradient(left, #25c481, #25b7c4);
     background: linear-gradient(to right, #25c481, #25b7c4);
     font-family: 'Roboto', sans-serif;
+    width:90%;
+    margin-left: 6%;
   }
   section{
     margin: 50px;
   }
   
- 
+ .stock-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .page-a{
+   padding: 10px 20px;
+ }
+
+ .page-a:hover{
+  background-color: rgb(63, 206, 182);
+ }
+
+ .currentPage{
+  background-color: rgb(63, 206, 182);
+ }
