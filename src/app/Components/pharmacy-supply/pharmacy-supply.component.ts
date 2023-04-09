@@ -12,30 +12,40 @@ import { PharmacyMedicineSupplyService } from 'src/app/Services/PharmacyMedicine
 export class PharmacySupplyComponent {
   startDate: string;
   searchValue: string = '';
+  currentPage:number = 1;
+  totalPages:number;
   supplyMedicines: PharmacyMedicineSupply[] = [];
+  formattedDate:any;
   constructor(private route:ActivatedRoute, private router: Router, private supplyService: PharmacyMedicineSupplyService){
     this.startDate = this.route.snapshot.paramMap.get("date")+"";
-    var formattedDate = formatDate(this.startDate,'dd-MM-yyyy','en-US');
+    this.formattedDate = formatDate(this.startDate,'dd-MM-yyyy','en-US');
     if(localStorage.getItem('newSupply')=="true"){
-         supplyService.createPharmacyMedSupply(formattedDate).subscribe(data => {
-         console.log(data);
-         this.supplyMedicines = data;
-         localStorage.setItem('newSupply',false+"");
+         supplyService.createPharmacyMedSupply(this.formattedDate).subscribe((data:any) => {
+          this.supplyMedicines = data.pharmacyMedSupplies;
+          this.currentPage = data.currentPage;
+          this.totalPages = data.pages;
+          localStorage.setItem('newSupply',false+"");
       },
       error => {
          console.log(error);
       })
     }
     else{
-      supplyService.alreadySupplied(formattedDate).subscribe(data=>{
-        console.log(data);
-        this.supplyMedicines = data;
+       this.changePage(this.currentPage);
+    }
+  }
+
+  changePage(page:number){
+    this.currentPage = page;
+    this.supplyService.alreadySupplied(this.currentPage, this.formattedDate).subscribe(
+      (data:any) => {
+        this.supplyMedicines = data.pharmacyMedSupplies;
+        this.currentPage = data.currentPage;
+        this.totalPages = data.pages;
         localStorage.setItem('newSupply',false+"");
       },
       error => {
          console.log(error);
-      })
-    }
+    })
   }
-
 }

@@ -13,3 +13,10 @@
         <td>{{schedule.supplyCount}}</td>
     </tr>
 </table>
+<nav aria-label="...">
+    <ul class="pagination">
+      <li (click)="changePage(i+1)" class="page-item page-li" *ngFor="let page of [].constructor(totalPages); index as i">
+        <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage" >{{i+1}}</a>
+      </li>
+    </ul>
+</nav>
