@@ -1,83 +1,95 @@
-
 <div style="margin-top:40px;">
-<div style="background-image: url('https://cdn.create.vista.com/api/media/medium/349817956/stock-photo-stethoscope-clipboard-and-pills-closeup?token=');background-color: rgb(99, 136, 99);background-blend-mode: multiply;">
-    
-    <br>
-    <div style="width:400px;height:400px;justify-content: center;margin-left:540px">
-    
-        <form [formGroup]="scheduleform" (ngSubmit)="schedule()">
-            <div style="margin-left:100px;padding-top:100px;">
-            <label style="margin-left: 83px;color:white;font-size:17px;font-weight: 700;">Date</label><br>
+    <div
+        style="background-image: url('https://cdn.create.vista.com/api/media/medium/349817956/stock-photo-stethoscope-clipboard-and-pills-closeup?token=');background-color: rgb(99, 136, 99);background-blend-mode: multiply;">
 
-            <input type="date" formControlName="scheduledate" [max]="maxDate" style="width:210px;padding:8px;border-radius: 4px;outline: none;border: none;">
-            <div style="color:white" *ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
+        <br>
+        <div style="width:400px;height:400px;justify-content: center;margin-left:540px">
 
-                <small *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is required</small>
-                <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should not be
-                    enterd</small>
-                <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDay'] && !scheduleform.controls['scheduledate'].errors?.['invalidDate']">Sunday should not be
-                    enterd</small>
-            </div>
+            <form [formGroup]="scheduleform" (ngSubmit)="schedule()">
+                <div style="margin-left:100px;padding-top:100px;">
+                    <label style="margin-left: 83px;color:white;font-size:17px;font-weight: 700;">Date</label><br>
+
+                    <input type="date" formControlName="scheduledate" [max]="maxDate"
+                        style="width:210px;padding:8px;border-radius: 4px;outline: none;border: none;">
+                    <div style="color:white"
+                        *ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
+
+                        <small *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is
+                            required</small>
+                        <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should
+                            not be
+                            enterd</small>
+                        <small
+                            *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDay'] && !scheduleform.controls['scheduledate'].errors?.['invalidDate']">Sunday
+                            should not be
+                            enterd</small>
+                    </div>
+                </div>
+                <br>
+                <input
+                    style="margin-left:150px;height:40px;background:white;width:110px;outline: none;border: none;color:black;border-radius: 20px;"
+                    type="submit" [disabled]="!scheduleform.valid" value="Schedule">
+            </form>
+        </div>
+
+    </div>
+    <div class="body">
+        <section>
+            <br>
+            <h1>Scheduled Details</h1>
+
+            <div class="radios" style="margin-left:0px;font-size: 20px;color:white;">
+                <input style="margin-left: 10px;margin-right:2px;" class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter"
+                    type="radio" value="Supplied" />
+                <label> Supplied</label>
+                <input style="margin-left: 10px;margin-right:2px;" class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter"
+                    type="radio" value="Pending" />
+                <label> Pending</label>
+                <input style="margin-left: 10px;margin-right:2px;" checked class="radioFilter" [(ngModel)]="selectRadio"
+                    name="radioFilter" type="radio" value="All" />
+                <label> All</label>
             </div>
             <br>
-            <input style="margin-left:150px;height:40px;background:white;width:110px;outline: none;border: none;color:black;border-radius: 20px;" type="submit" [disabled]="!scheduleform.valid" value="Schedule">
-        </form>
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                        <tr>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody *ngFor="let item of listofbookeddates">
+                        <tr>
+                            <td>{{item.startDate | date}}</td>
+                            <td>{{item.endDate | date}}</td>
+                            <td>
+                                <span *ngIf="!item.completed">
+                                    <p style="color:white">Pending</p>
+                                </span>
+                                <span *ngIf="item.completed && !item.supplied">
+                                    <p>Not Supplied</p>
+                                </span>
+                                <span *ngIf="item.completed && item.supplied">
+                                    <p>Supplied</p>
+                                </span>
+                            </td>
+
+                            <td><button
+                                    style="height:40px;background:white;width:200px;outline: none;border: none;color:black;"
+                                    [routerLink]="['/schedules', item.startDate]">Go To Schedules</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <br>
+        <br>
     </div>
-
-</div>
-<br>
-<br>
-<div class="radios">
-    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Supplied" /> 
-    <label> Supplied</label>
-    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Pending" />
-    <label> Pending</label>
-    <input checked class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="All" />
-    <label> All</label>
-</div>
-<div class="body">
-    <section>
-      <br>
-      <h1>Scheduled Details</h1>
-      <br>
-      <div class="tbl-header">
-        <table cellpadding="0" cellspacing="0" border="0">
-          <thead>
-            <tr>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-            </thead>
-        </table>
-      </div>
-      <div class="tbl-content">
-        <table cellpadding="0" cellspacing="0" border="0">
-          <tbody *ngFor="let item of listofbookeddates">
-            <tr>
-                <td>{{item.startDate | date}}</td>
-                <td>{{item.endDate | date}}</td>
-                <td>
-                    <span *ngIf="!item.completed">
-                        <p style="color:white">Pending</p>
-                    </span>
-                    <span *ngIf="item.completed && !item.supplied">
-                        <p>Not Supplied</p>
-                    </span>
-                    <span *ngIf="item.completed && item.supplied">
-                        <p>Supplied</p>
-                    </span>
-                </td>
-
-                <td><button  style="height:40px;background:white;width:200px;outline: none;border: none;color:black;" [routerLink]="['/schedules', item.startDate]">Go To Schedules</button></td>
-            </tr>
-            </tbody>
-        </table>
-      </div>
-    </section>
-    <br>
-    <br>
-  </div>
-  <br><br>
+    <br><br>
 </div>
