@@ -46,4 +46,21 @@ h1{
     margin: 50px;
   }
   
- 
+ .stock-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .page-a{
+   padding: 10px 20px;
+ }
+
+ .page-a:hover{
+  background-color: rgb(63, 206, 182);
+ }
+
+ .currentPage{
+  background-color: rgb(63, 206, 182);
+ }
