@@ -11,13 +11,22 @@ import { MedicinestockdisplayService } from 'src/app/Services/MedicineStockDispl
 export class MedicinestockdisplayComponent {
   medicinestocklist:MedicineStock[]=[];
   currentPage:number = 1;
-  totalPage:number;
+  totalPages:number;
   constructor(private medicinestockdisplayobj:MedicinestockdisplayService,private route:Router){}
   ngOnInit(){
     this.medicinestockdisplayobj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
       this.medicinestocklist = data.medicineStocks;
       this.currentPage = data.currentPage;
-      this.totalPage = data.pages;
+      this.totalPages = data.pages;
+    })
+  }
+
+  changePage(page:number){
+    this.currentPage = page;
+    this.medicinestockdisplayobj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
+      this.medicinestocklist = data.medicineStocks;
+      this.currentPage = data.currentPage;
+      this.totalPages = data.pages;
     })
   }
 }
