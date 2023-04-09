@@ -12,7 +12,19 @@
     Supplied!
     <button (click)="pharmacySupply()">View Supplied Details</button>
 </span>
-
+<div>
+    <div>
+        <input class="inputFilter" [(ngModel)]="searchValue" placeholder="Search by " />
+    </div>
+    <div class="radios">
+        <input checked class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="" /> 
+        <label> Representative Name</label>
+        <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Doctor" />
+        <label> Doctor Name</label>
+        <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Ailment" />
+        <label> Treating Ailment</label>
+    </div>
+</div>
 <table>
     <tr>
         <th>Representative Name</th>
@@ -22,7 +34,7 @@
         <th>Date</th>
         <th>Slot</th>
     </tr>
-    <tr *ngFor="let schedule of schedules">
+    <tr *ngFor="let schedule of schedules | FilterByNames:searchValue:selectRadio">
         <td>{{schedule.representativeName}}</td>
         <td>{{schedule.doctorName}}</td>
         <td>{{schedule.treatingAilment}}</td>
