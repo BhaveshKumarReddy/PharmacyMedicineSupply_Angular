@@ -1,0 +1,9 @@
+.alert.error .text {
+    border: 1px solid rgb(238, 211, 215);
+    background-color: rgb(242, 222, 222);
+}
+
+.alert.error .text,
+.alert.error .close {
+    color: rgb(185, 74, 72);
+}

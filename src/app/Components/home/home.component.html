@@ -1,47 +1,49 @@
-
 <div class="bg">
-    <div class="detail-box"style="margin-top:50px;padding-left:60px;">
-        <h1 style="padding-top:160px">
-          We Supply Good Medicines
-        </h1>
-        <p style="width:35%">
-            We are dedicated to providing compassionate care and innovative solutions that empower our patients to lead their best lives, with a commitment to treating the whole person and earning their trust as a reliable partner in their journey towards health and wellness.
-        </p>
-        <div *ngIf="local.getItem('token')!=null">
-            <button routerLink="provideschedule" style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;margin-right:25px" >View Schedules</button>
-            <button routerLink="medicinestocks" style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;;margin-right:5px">View Medicine Stock</button><br><br><br>
-
-            <button routerLink="provideschedule" style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;margin-right:5px;margin-bottom:5px;" >Add Schedule</button><br>
-        </div>
-</div>
+  <div class="detail-box" style="margin-top:50px;padding-left:60px;">
+    <h1 style="padding-top:160px">
+      We Supply Good Medicines
+    </h1>
+    <p style="width:35%">
+      We are dedicated to providing compassionate care and innovative solutions that empower our patients to lead their
+      best lives, with a commitment to treating the whole person and earning their trust as a reliable partner in their
+      journey towards health and wellness.
+    </p><br>
+    <div *ngIf="local.getItem('token')!=null">
+      <button routerLink="provideschedule"
+        style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;margin-right:25px">Schedules</button>
+      <button routerLink="medicinestocks"
+        style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;;margin-right:5px">View
+        Medicine Stock</button><br><br><br>
+    </div>
+  </div>
 </div>
 <br>
-
-
-
 <section class="about_section layout_margin-bottom">
-    <div class="container  ">
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="https://news.sap.com/africa/files/2017/06/antibiotic-resistance.jpg" width="75%"  alt="">
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 ">
+        <div class="img-box">
+          <img src="https://news.sap.com/africa/files/2017/06/antibiotic-resistance.jpg" width="75%" alt="">
         </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                About <span>Us</span>
-              </h2>
-            </div>
-            <p>
-                Through cutting-edge research and development, we bring innovative medicines, vaccines, and healthcare products to patients in need. Our team of experts is committed to meeting the highest standards of quality and safety, ensuring that our products are effective and accessible to all who need them. We work collaboratively with healthcare professionals, patients, and regulatory agencies to make a positive impact on global health, and we are proud to be at the forefront of medical innovation.
-
-            </p>
+      </div>
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              About <span>Us</span>
+            </h2>
           </div>
+          <p>
+            Through cutting-edge research and development, we bring innovative medicines, vaccines, and healthcare
+            products to patients in need. Our team of experts is committed to meeting the highest standards of quality
+            and safety, ensuring that our products are effective and accessible to all who need them. We work
+            collaboratively with healthcare professionals, patients, and regulatory agencies to make a positive impact
+            on global health, and we are proud to be at the forefront of medical innovation.
+
+          </p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 <br><br>
-  

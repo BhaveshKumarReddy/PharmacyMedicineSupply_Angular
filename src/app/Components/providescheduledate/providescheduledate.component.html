@@ -7,9 +7,9 @@
     justify-content: center;margin-left:540px">
     
         <form [formGroup]="scheduleform" (ngSubmit)="schedule()">
-            <div style="margin-left:113px;padding-top:100px;">
-            <label style="margin-left: 65px;color:white;font-size:17px;font-weight: 700;">Date</label><br>
-            <input type="date" formControlName="scheduledate" style="width:170px;">
+            <div style="margin-left:100px;padding-top:100px;">
+            <label style="margin-left: 83px;color:white;font-size:17px;font-weight: 700;">Date</label><br>
+            <input type="date" formControlName="scheduledate" style="width:210px;padding:8px;border-radius: 4px;">
             <div style="color:white"*ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
                 <small *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is required</small>
                 <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should not be
@@ -19,7 +19,7 @@
             </div>
             </div>
             <br>
-            <input style="margin-left:140px;height:40px;background:white;width:110px;outline: none;border: none;color:black;border-radius: 20px;" type="submit" [disabled]="!scheduleform.valid" value="Schedule">
+            <input style="margin-left:150px;height:40px;background:white;width:110px;outline: none;border: none;color:black;border-radius: 20px;" type="submit" [disabled]="!scheduleform.valid" value="Schedule">
         </form>
     </div>
 
