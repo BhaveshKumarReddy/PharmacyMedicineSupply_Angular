@@ -1,36 +1,75 @@
-<a routerLink="">Go Back</a>
-{{startDate | date}}
-<br/>
+<br>
+<br>
 
-<h2>Schedule</h2>
 
-<button *ngIf="currentDateSchedule?.completed && !currentDateSchedule?.supplied"  (click)="newPharmacySupply()">Supply</button>
+<div style="background-image: url('https://biostempharma.com/wp-content/uploads/2021/05/BIOSTEM-PHARMA-Pharma-Franchise-Company-1536x492.jpg');height:400px;">
+  
+  <div style="padding-top:80px;">
+    <a routerLink="" style="margin-left:600px;color:black;cursor: pointer;padding:10px;;"> <i class="fa fa-arrow-left" style="font-size:20px" aria-hidden="true"></i> Back </a><br><br>
+  <input class="inputfilter" placeholder="Search By" style="height:30px;width:400px;border-radius: 20px;border:none;outline:none;padding:20px;margin-left:600px;"/>
+</div>
 
-<br/>
+<div class="radius" style="margin-left:530px;padding:20px;">
+  <input checked class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value=""/>
+  <label style="margin-right:20px;">Representative Name</label>
+  <input class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value="Doctor"/>
+  <label style="margin-right:20px;">Doctor Name</label>
+  <input class="radiofilter" style="accent-color:black"  name="radioFilter" type="radio" value="Ailment"/>
+  <label style="margin-right:20px;">Treating Ailment</label>
+</div>
+<h2 style="margin-left:720px;">Schedule</h2>
 
-<span *ngIf="currentDateSchedule?.supplied" >
+<button *ngIf="currentDateSchedule?.completed && !currentDateSchedule?.supplied" style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-right:25px;margin:20px" (click)="newPharmacySupply()">Supply</button>
+
+<span *ngIf="currentDateSchedule?.supplied" style="margin-left:650px;" >
     Supplied!
-    <button (click)="pharmacySupply()">View Supplied Details</button>
+    <button (click)="pharmacySupply()"  style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-right:25px;margin:10px">View Supplied Details</button>
 </span>
 
-<table>
-    <tr>
-        <th>Representative Name</th>
-        <th>Doctor Name</th>
-        <th>Ailment</th>
-        <th>Contact Number</th>
-        <th>Date</th>
-        <th>Slot</th>
-    </tr>
-    <tr *ngFor="let schedule of schedules">
-        <td>{{schedule.representativeName}}</td>
-        <td>{{schedule.doctorName}}</td>
-        <td>{{schedule.treatingAilment}}</td>
-        <td>{{schedule.doctorContactNumber}}</td>
-        <td>{{schedule.date | date}}</td>
-        <td>{{schedule.slot}}</td>
-        <button (click)="OpenMedicineDemand(schedule)" *ngIf="!schedule.status && checkEligible(schedule.date)">Enter Demand</button>
-        <td *ngIf="!schedule.status && checkEligible(schedule.date)==false">Pending</td>
-        <td *ngIf="schedule.status">Demand Submitted</td>
-    </tr>
-</table>
+</div>
+<div class="body">
+    <section>
+      <br>
+      <h1>Representatives Meeting Schedule Details</h1>
+      <br>
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+                <th>Representative Name</th>
+                <th>Doctor Name</th>
+                <th>Ailment</th>
+                <th>Contact Number</th>
+                <th>Date</th>
+                <th>Slot</th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr *ngFor="let schedule of schedules">
+                <td>{{schedule.representativeName}}</td>
+                <td>{{schedule.doctorName}}</td>
+                <td>{{schedule.treatingAilment}}</td>
+                <td>{{schedule.doctorContactNumber}}</td>
+                <td>{{schedule.date | date}}</td>
+                <td>{{schedule.slot}}</td>
+                <button (click)="OpenMedicineDemand(schedule)" *ngIf="!schedule.status && checkEligible(schedule.date)" style="height:30px;margin-top:10px;background:white;width:120px;outline: none;border: none;color:black;">Enter Demand</button>
+                <td *ngIf="!schedule.status && checkEligible(schedule.date)==false">Pending</td>
+                <td *ngIf="schedule.status">Demand Submitted</td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </section>
+    <br>
+    <br>
+  </div>
+  <br><br>
+
+  
+<br/>
+

@@ -1,27 +1,22 @@
 
 <div class="bg">
     <div class="detail-box"style="margin-top:50px;padding-left:60px;">
-        <h1 style="padding-top:230px">
+        <h1 style="padding-top:160px">
           We Supply Good Medicines
         </h1>
         <p style="width:35%">
             We are dedicated to providing compassionate care and innovative solutions that empower our patients to lead their best lives, with a commitment to treating the whole person and earning their trust as a reliable partner in their journey towards health and wellness.
         </p>
+        <div *ngIf="local.getItem('token')!=null">
+            <button routerLink="provideschedule" style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;margin-right:25px" >View Schedules</button>
+            <button routerLink="medicinestocks" style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;;margin-right:5px">View Medicine Stock</button><br><br><br>
+
+            <button routerLink="provideschedule" style="height:40px;background:white;width:170px;outline: none;border: none;color:black;cursor: pointer;margin-right:5px;margin-bottom:5px;" >Add Schedule</button><br>
+        </div>
 </div>
 </div>
 <br>
-<div class="main-box">
-    <div class="left-box text-center">
-        
-        <div class="box-for-span">
-        </div>
-    </div>
-    <div *ngIf="local.getItem('token')!=null" style="border-top: 2px dashed white" class="right-box text-center">
-        <p routerLink="provideschedule" style="color:white; margin: 40px 15px 15px 15px;" class="h4-rightBox">View Schedules</p>
-        <p routerLink="provideschedule" style="color:white; margin: 15px;" class="h4-rightBox">Add Schedule</p>
-        <p routerLink="medicinestocks" style="color:white; margin: 15px;" class="h4-rightBox">View Medicine Stock</p>
-    </div>
-</div>
+
 
 
 <section class="about_section layout_margin-bottom">
