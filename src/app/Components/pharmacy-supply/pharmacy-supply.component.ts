@@ -11,6 +11,7 @@ import { PharmacyMedicineSupplyService } from 'src/app/Services/PharmacyMedicine
 })
 export class PharmacySupplyComponent {
   startDate: string;
+  searchValue: string = '';
   supplyMedicines: PharmacyMedicineSupply[] = [];
   constructor(private route:ActivatedRoute, private router: Router, private supplyService: PharmacyMedicineSupplyService){
     this.startDate = this.route.snapshot.paramMap.get("date")+"";
