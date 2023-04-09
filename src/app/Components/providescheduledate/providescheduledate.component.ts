@@ -14,23 +14,23 @@ import { ScheduleService } from 'src/app/Services/Schedule/schedule.service';
   styleUrls: ['./providescheduledate.component.css']
 })
 export class ProvidescheduledateComponent {
+  selectRadio:string
   datetoschedule:string=""
   sd:string=""
-scheduleform:FormGroup=new FormGroup({})
-listofbookeddates:DatesSchedule[]=[]
-
-date:Date=new Date()
-listofscheduledresults:RepresentativeSchedule[]=[]
-ngOnInit(){
-  this.scheduleform=new FormGroup({
-    scheduledate:new FormControl(this.date,[
-      Validators.required,dateValidator(), DaydateValidator()
-    ]),
-  })
-   this.bookedServObj.getAllDateSchedule().subscribe(data=>{
-    this.listofbookeddates=data;
-   })
-}
+  scheduleform:FormGroup=new FormGroup({})
+  listofbookeddates:DatesSchedule[]=[]
+  date:Date=new Date()
+  listofscheduledresults:RepresentativeSchedule[]=[]
+  ngOnInit(){
+      this.scheduleform=new FormGroup({
+        scheduledate:new FormControl(this.date,[
+          Validators.required,dateValidator(), DaydateValidator()
+        ]),
+      })
+       this.bookedServObj.getAllDateSchedule().subscribe(data=>{
+        this.listofbookeddates=data;
+       })
+  }
 constructor(private scheduleobj: ScheduleService,private route:Router,private bookedServObj: DateScheduleService){}
 
 schedule()

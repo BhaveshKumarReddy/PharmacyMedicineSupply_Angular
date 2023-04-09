@@ -13,6 +13,8 @@ import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-s
 import { HomeComponent } from './Components/home/home.component';
 import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay/medicinestockdisplay.component';
 import { LogoutComponent } from './Components/logout/logout.component';
+import { FilterByStatus } from './Pipes/DateSchedulePipe';
+import { FilterByNames } from './Pipes/RepresentativeSchedulePipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { LogoutComponent } from './Components/logout/logout.component';
     PharmacySupplyComponent,
     HomeComponent,
     MedicinestockdisplayComponent,
-    LogoutComponent
+    LogoutComponent,
+    FilterByStatus,
+    FilterByNames
   ],
   imports: [
     BrowserModule,

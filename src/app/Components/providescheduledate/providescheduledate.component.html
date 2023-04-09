@@ -10,8 +10,16 @@
         <input type="submit" [disabled]="!scheduleform.valid" value="Schedule">
     </form>
 </div>
+<div class="radios">
+    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Supplied" /> 
+    <label> Supplied</label>
+    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Pending" />
+    <label> Pending</label>
+    <input checked class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="All" />
+    <label> All</label>
+</div>
 <div>
-    <table *ngFor="let item of listofbookeddates">
+    <table *ngFor="let item of listofbookeddates | FilterByStatus: selectRadio">
         <tr>
             <th>Start Date</th>
             <th>End Date</th>
