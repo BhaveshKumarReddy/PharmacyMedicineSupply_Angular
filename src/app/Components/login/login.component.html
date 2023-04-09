@@ -4,8 +4,8 @@
     <!-- <div class='overlay'></div> -->
     <div class='content'>
       <div class='welcome' style="color: black;">Hello There!</div>
-      <div class='subtitle' style="color: black;">We're almost done. Before using our services you need to create an account. No account?</div>
-      <a routerLink="/register" style="color:black; margin: 40px 15px 15px 15px;" class="h4-rightBox text-center">SIGN UP!</a>
+      <div class='subtitle' style="color: black;"><b>No account?</b></div><br>
+      <a routerLink="/register" style="color:black;" class="h4-rightBox text-center"><button class="button-33">SIGN UP!</button></a>
       <div class='input-fields'>
         <form [formGroup]="loginform" (ngSubmit)="login()">
             
@@ -13,28 +13,28 @@
                     {{invalidCredentialMessage}}
                 </div>
                 <div class="form-group">
-                    <label for="email" class="control-label inputlabeldesign" style="color: black; margin-left:140px;" >Email</label><br />
+                    <label for="email" class="control-label inputlabeldesign" style="color: black; " >Email:</label><br />
                 <input id="email" class="inputdesign" type="email" formControlName="email"/>
                 <div *ngIf="loginform.controls['email'].invalid || loginform.controls['email'].errors">
                     <div *ngIf="loginform.controls['email'].errors?.['required'] && loginform.controls['email'].touched">
-                        This field is required.
+                        <div style="color: red;">This field is required.</div>
                     </div>
                     <div *ngIf="loginform.controls['email'].errors?.['email']">
-                        Email not valid
+                        <div style="color: red;">Email not valid</div>
                     </div>
                 </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="control-label inputlabeldesign" style="color: black; margin-left:140px" >Password</label><br />
+                    <label for="password" class="control-label inputlabeldesign" style="color: black;" >Password:</label><br />
                 <input id="password" class="inputdesign" type="password" formControlName="password"/>
                 <div *ngIf="loginform.controls['password'].invalid || loginform.controls['password'].errors">
                     <div *ngIf="loginform.controls['password'].errors?.['required'] && loginform.controls['password'].touched">
-                        This field is required.
+                        <div style="color: red;">This field is required.</div>
                     </div>
                 </div>
                 </div>
                 <div class="form-group" style="margin-left:90px;">
-                    <input type="submit" [disabled]="!loginform.valid" value="Login" style="background-color:darkgreen;color:white;width:140px;height:40px;margin-top:10px;border:none;" class="button-design" />
+                    <input type="submit" [disabled]="!loginform.valid" value="Login" style="background-color:rgb(13, 96, 129);color:white;width:140px;height:40px;margin-top:10px;border:none;" class="button-design" />
                 </div>
             
             </form>
