@@ -9,18 +9,18 @@ import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-s
 import { HomeComponent } from './Components/home/home.component';
 import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay/medicinestockdisplay.component';
 import { LogoutComponent } from './Components/logout/logout.component';
-import { AuthGuard } from './Guards/auth-guard.guard';
+import { AuthGuardGuard } from './Guards/auth-guard.guard';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  {path:'provideschedule',component:ProvidescheduledateComponent,canActivate:[AuthGuard]},
-  {path:'logout',component:LogoutComponent,canActivate:[AuthGuard]},
-  {path:'schedules/:date',component:RepresentativeScheduleComponent,canActivate:[AuthGuard]},
-  {path:'medicinedemand/:id',component:MedicinedemandComponent,canActivate:[AuthGuard]},
-  {path:'supply/:date',component:PharmacySupplyComponent,canActivate:[AuthGuard]},
-  {path:'medicinestocks',component:MedicinestockdisplayComponent,canActivate:[AuthGuard]}
+  {path:'provideschedule',component:ProvidescheduledateComponent,canActivate:[AuthGuardGuard]},
+  {path:'logout',component:LogoutComponent,canActivate:[AuthGuardGuard]},
+  {path:'schedules/:date',component:RepresentativeScheduleComponent,canActivate:[AuthGuardGuard]},
+  {path:'medicinedemand/:id',component:MedicinedemandComponent,canActivate:[AuthGuardGuard]},
+  {path:'supply/:date',component:PharmacySupplyComponent,canActivate:[AuthGuardGuard]},
+  {path:'medicinestocks',component:MedicinestockdisplayComponent,canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({

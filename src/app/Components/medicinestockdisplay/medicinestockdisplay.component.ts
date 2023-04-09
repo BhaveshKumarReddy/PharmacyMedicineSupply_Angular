@@ -9,12 +9,24 @@ import { MedicinestockdisplayService } from 'src/app/Services/MedicineStockDispl
   styleUrls: ['./medicinestockdisplay.component.css']
 })
 export class MedicinestockdisplayComponent {
-  medicinestocklist:MedicineStock[]=[]
+  medicinestocklist:MedicineStock[]=[];
+  currentPage:number = 1;
+  totalPages:number;
   constructor(private medicinestockdisplayobj:MedicinestockdisplayService,private route:Router){}
   ngOnInit(){
-    this.medicinestockdisplayobj.fetchMedicineStockDetails().subscribe(data=>{
-      this.medicinestocklist=data
-      console.log(this.medicinestocklist)
+    this.medicinestockdisplayobj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
+      this.medicinestocklist = data.medicineStocks;
+      this.currentPage = data.currentPage;
+      this.totalPages = data.pages;
+    })
+  }
+
+  changePage(page:number){
+    this.currentPage = page;
+    this.medicinestockdisplayobj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
+      this.medicinestocklist = data.medicineStocks;
+      this.currentPage = data.currentPage;
+      this.totalPages = data.pages;
     })
   }
 }
