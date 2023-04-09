@@ -1,14 +1,12 @@
-<div style="margin-top:100px;">
-<div >
-    <h2 style="margin-left: 650px;;">Schedule Date</h2>
+<div style="margin-top: 40px;">
+<div style="background-image: url('https://cdn.create.vista.com/api/media/medium/349817956/stock-photo-stethoscope-clipboard-and-pills-closeup?token=');background-color: rgb(99, 136, 99);background-blend-mode: multiply;">
     <br>
-    <div style="width:400px;height:400px;    background: linear-gradient(to right, #25c481, #25b7c4);
-    justify-content: center;margin-left:540px">
+    <div style="width:400px;height:400px;justify-content: center;margin-left:540px">
     
         <form [formGroup]="scheduleform" (ngSubmit)="schedule()">
             <div style="margin-left:100px;padding-top:100px;">
             <label style="margin-left: 83px;color:white;font-size:17px;font-weight: 700;">Date</label><br>
-            <input type="date" formControlName="scheduledate" [max]="maxDate" style="width:210px;padding:8px;border-radius: 4px;">
+            <input type="date" formControlName="scheduledate" [max]="maxDate" style="width:210px;padding:8px;border-radius: 4px;outline: none;border: none;">
             <div style="color:white" *ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
                 <small *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is required</small>
                 <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should not be
@@ -23,20 +21,21 @@
     </div>
 
 </div>
-<br>
-<br>
-<div class="radios">
-    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Supplied" /> 
-    <label> Supplied</label>
-    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Pending" />
-    <label> Pending</label>
-    <input checked class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="All" />
-    <label> All</label>
-</div>
 <div class="body">
     <section>
       <br>
       <h1>Scheduled Details</h1>
+      <div class="radios" style="margin-left:0px;font-size: 20px;color:white;">
+        <input style="margin-left: 10px;margin-right:2px;" class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter"
+            type="radio" value="Supplied" />
+        <label> Supplied</label>
+        <input style="margin-left: 10px;margin-right:2px;" class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter"
+            type="radio" value="Pending" />
+        <label> Pending</label>
+        <input style="margin-left: 10px;margin-right:2px;" checked class="radioFilter" [(ngModel)]="selectRadio"
+            name="radioFilter" type="radio" value="All" />
+        <label> All</label>
+       </div>
       <br>
       <div class="tbl-header">
         <table cellpadding="0" cellspacing="0" border="0">
@@ -52,7 +51,7 @@
       </div>
       <div class="tbl-content">
         <table cellpadding="0" cellspacing="0" border="0">
-          <tbody *ngFor="let item of listofbookeddates">
+          <tbody *ngFor="let item of listofbookeddates | FilterByStatus: selectRadio">
             <tr>
                 <td>{{item.startDate | date}}</td>
                 <td>{{item.endDate | date}}</td>

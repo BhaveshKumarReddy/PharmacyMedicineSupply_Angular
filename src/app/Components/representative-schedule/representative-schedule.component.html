@@ -5,26 +5,25 @@
 <div style="background-image: url('https://biostempharma.com/wp-content/uploads/2021/05/BIOSTEM-PHARMA-Pharma-Franchise-Company-1536x492.jpg');height:400px;">
   
   <div style="padding-top:80px;">
-    <a routerLink="" style="margin-left:600px;color:black;cursor: pointer;padding:10px;;"> <i class="fa fa-arrow-left" style="font-size:20px" aria-hidden="true"></i> Back </a><br><br>
-  <input class="inputfilter" placeholder="Search By" style="height:30px;width:400px;border-radius: 20px;border:none;outline:none;padding:20px;margin-left:600px;"/>
-</div>
+    <a routerLink="/provideschedule" style="margin-left:600px;color:black;cursor: pointer;padding:10px;;"> <i class="fa fa-arrow-left" style="font-size:17px" aria-hidden="true"></i> Back </a><br><br>
+    <input [(ngModel)]="searchValue" class="inputfilter" placeholder="Search By" style="height:30px;width:400px;border-radius: 20px;border:none;outline:none;padding:20px;margin-left:600px;"/>
+  </div>
 
-<div class="radius" style="margin-left:530px;padding:20px;">
-  <input checked class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value=""/>
-  <label style="margin-right:20px;">Representative Name</label>
-  <input class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value="Doctor"/>
-  <label style="margin-right:20px;">Doctor Name</label>
-  <input class="radiofilter" style="accent-color:black"  name="radioFilter" type="radio" value="Ailment"/>
-  <label style="margin-right:20px;">Treating Ailment</label>
-</div>
-<h2 style="margin-left:720px;">Schedule</h2>
+  <div class="radius" style="margin-left:530px;padding:20px;">
+    <input checked [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value=""/>
+    <label style="margin-right:20px;">Representative Name</label>
+    <input [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value="Doctor"/>
+    <label style="margin-right:20px;">Doctor Name</label>
+    <input [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black"  name="radioFilter" type="radio" value="Ailment"/>
+    <label style="margin-right:20px;">Treating Ailment</label>
+  </div>
 
-<button *ngIf="currentDateSchedule?.completed && !currentDateSchedule?.supplied" style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-left:700px;" (click)="newPharmacySupply()">Supply</button>
+  <button *ngIf="currentDateSchedule?.completed && !currentDateSchedule?.supplied" style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-left:700px;" (click)="newPharmacySupply()">Supply</button>
 
-<span *ngIf="currentDateSchedule?.supplied" style="margin-left:650px;" >
-    Supplied!
-    <button (click)="pharmacySupply()"  style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-right:25px;margin:10px">View Supplied Details</button>
-</span>
+  <span *ngIf="currentDateSchedule?.supplied" style="margin-left:650px;" >
+      Supplied!
+      <button (click)="pharmacySupply()"  style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-right:25px;margin:10px">View Supplied Details</button>
+  </span>
 </div>
 
 <div class="body">
@@ -47,7 +46,7 @@
                 <th></th>
                 <th></th>
             </tr>
-            <tr *ngFor="let schedule of schedules">
+            <tr *ngFor="let schedule of schedules | FilterByNames:searchValue:selectRadio">
                 <td>{{schedule.representativeName}}</td>
                 <td>{{schedule.doctorName}}</td>
                 <td>{{schedule.treatingAilment}}</td>

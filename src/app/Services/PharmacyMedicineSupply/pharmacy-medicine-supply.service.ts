@@ -8,20 +8,22 @@ import { PharmacyMedicineSuppliesResponse } from 'src/Models/PharmacyMedicineSup
   providedIn: 'root'
 })
 export class PharmacyMedicineSupplyService {
-  constructor(private http:HttpClient) { }
+
+  auth_token:string;
+  constructor(private http:HttpClient) {
+    this.auth_token = localStorage.getItem('token');
+  }
   
-  //Variable to store the request URL for accessing API.
   req:string="https://localhost:7287/api/PharmacyMedSupply/";
 
-  
-  //Method to get the Schedule from the API.
   createPharmacyMedSupply(startDate:string):Observable<PharmacyMedicineSuppliesResponse[]>
   {
     return this.http.get<PharmacyMedicineSuppliesResponse[]>(this.req+"Supply/"+1+"/"+startDate,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });
   }
@@ -32,7 +34,8 @@ export class PharmacyMedicineSupplyService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });
   }

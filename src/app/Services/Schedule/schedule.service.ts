@@ -9,7 +9,11 @@ import { formatDate } from '@angular/common';
   providedIn: 'root'
 })
 export class ScheduleService {
-  constructor(private http:HttpClient) { }
+
+  auth_token:string;
+  constructor(private http:HttpClient) {
+    this.auth_token = localStorage.getItem('token');
+  }
   
   req:string="https://localhost:7287/api/MedicalRepresentativeSchedule/";
 
@@ -20,19 +24,20 @@ export class ScheduleService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });
   }
 
   createSchedule(startDate:string):Observable<RepresentativeSchedule[]>
   {
-    console.log("creating schedule");
     return this.http.get<RepresentativeSchedule[]>(this.req+"CreateSchedule/"+startDate,{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });
   }

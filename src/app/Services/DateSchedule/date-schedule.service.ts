@@ -8,22 +8,25 @@ import { DatesSchedule } from 'src/Models/DatesSchedule';
   providedIn: 'root'
 })
 export class DateScheduleService {
+
   currentDateSchedule: DatesSchedule = null;
   AllSchedule:DatesSchedule[]=[];
-  constructor(private http:HttpClient) { }
+  auth_token:string;
+
+  constructor(private http:HttpClient) {
+    this.auth_token = localStorage.getItem('token');
+  }
   
-  //Variable to store the request URL for accessing API.
   req:string="https://localhost:7287/";
 
-  
-  //Method to get the Schedule from the API.
   getAllDateSchedule():Observable<DatesSchedule[]>
   {
     return this.http.get<DatesSchedule[]>(this.req+"api/DatesSchedule/",{
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });
   }
@@ -34,7 +37,8 @@ export class DateScheduleService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });
   }
@@ -45,11 +49,9 @@ export class DateScheduleService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });
   }
-
-
-
-  }
+}

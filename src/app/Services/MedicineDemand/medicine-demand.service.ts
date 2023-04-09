@@ -7,7 +7,11 @@ import { MedicineDemand } from 'src/Models/MedicineDemand';
   providedIn: 'root'
 })
 export class MedicineDemandService {
-  constructor(private http:HttpClient) { }
+  
+  auth_token:string;
+  constructor(private http:HttpClient) { 
+    this.auth_token = localStorage.getItem('token');
+  }
   
   //Variable to store the request URL for accessing API.
   req:string="https://localhost:7287/api/MedicineDemand/";
@@ -20,7 +24,8 @@ export class MedicineDemandService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*'
+        'Access-Control-Allow-Method':'*',
+        'Authorization': 'Bearer '+this.auth_token
       })
     });    
   }
