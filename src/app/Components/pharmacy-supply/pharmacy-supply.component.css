@@ -1,0 +1,11 @@
+.page-a{
+    padding: 10px 20px;
+  }
+ 
+  .page-a:hover{
+   background-color: rgb(63, 206, 182);
+  }
+ 
+  .currentPage{
+   background-color: rgb(63, 206, 182);
+  }

@@ -79,7 +79,6 @@ export class RegisterComponent {
         this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data=>{
           if(!data){
             this.nameerrormsg="Username Should be unique";
-
           }
         this.mailerrormsg="Mail Already Exists";
       })

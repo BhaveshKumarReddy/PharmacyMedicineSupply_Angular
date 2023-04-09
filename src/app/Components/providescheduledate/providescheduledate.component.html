@@ -8,8 +8,10 @@
         <form [formGroup]="scheduleform" (ngSubmit)="schedule()">
             <div style="margin-left:100px;padding-top:100px;">
             <label style="margin-left: 83px;color:white;font-size:17px;font-weight: 700;">Date</label><br>
-            <input type="date" formControlName="scheduledate" style="width:210px;padding:8px;border-radius: 4px;outline: none;border: none;">
-            <div style="color:white"*ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
+
+            <input type="date" formControlName="scheduledate" [max]="maxDate" style="width:210px;padding:8px;border-radius: 4px;outline: none;border: none;">
+            <div style="color:white" *ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
+
                 <small *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is required</small>
                 <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should not be
                     enterd</small>
@@ -25,7 +27,14 @@
 </div>
 <br>
 <br>
-
+<div class="radios">
+    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Supplied" /> 
+    <label> Supplied</label>
+    <input class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="Pending" />
+    <label> Pending</label>
+    <input checked class="radioFilter" [(ngModel)]="selectRadio" name="radioFilter" type="radio" value="All" />
+    <label> All</label>
+</div>
 <div class="body">
     <section>
       <br>
@@ -71,10 +80,4 @@
     <br>
   </div>
   <br><br>
-
-
-
-
-
-
-
+</div>

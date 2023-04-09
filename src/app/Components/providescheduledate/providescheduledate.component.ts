@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { DaydateValidator, dateValidator } from 'src/app/Shared/past-day.validator';
 import { DatesSchedule } from 'src/Models/DatesSchedule';
 import { RepresentativeSchedule } from 'src/Models/RepresentativeSchedule';
@@ -14,23 +14,25 @@ import { ScheduleService } from 'src/app/Services/Schedule/schedule.service';
   styleUrls: ['./providescheduledate.component.css']
 })
 export class ProvidescheduledateComponent {
+  selectRadio:string
   datetoschedule:string=""
   sd:string=""
-scheduleform:FormGroup=new FormGroup({})
-listofbookeddates:DatesSchedule[]=[]
+  scheduleform:FormGroup=new FormGroup({})
+  listofbookeddates:DatesSchedule[]=[]
+  date:Date=new Date()
+  listofscheduledresults:RepresentativeSchedule[]=[]
+  maxDate: string = formatDate(new Date("12-31-2023"),'yyyy-MM-dd','en-US');
 
-date:Date=new Date()
-listofscheduledresults:RepresentativeSchedule[]=[]
-ngOnInit(){
-  this.scheduleform=new FormGroup({
-    scheduledate:new FormControl(this.date,[
-      Validators.required,dateValidator(), DaydateValidator()
-    ]),
-  })
-   this.bookedServObj.getAllDateSchedule().subscribe(data=>{
-    this.listofbookeddates=data;
-   })
-}
+  ngOnInit(){
+      this.scheduleform=new FormGroup({
+        scheduledate:new FormControl(this.date,[
+          Validators.required,dateValidator(), DaydateValidator()
+        ]),
+      })
+       this.bookedServObj.getAllDateSchedule().subscribe(data=>{
+        this.listofbookeddates=data;
+       })
+  }
 constructor(private scheduleobj: ScheduleService,private route:Router,private bookedServObj: DateScheduleService){}
 
 schedule()
@@ -51,3 +53,4 @@ schedule()
     })
   }
 }
+

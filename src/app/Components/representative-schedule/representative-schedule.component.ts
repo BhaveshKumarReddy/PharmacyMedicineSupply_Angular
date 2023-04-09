@@ -20,6 +20,8 @@ export class RepresentativeScheduleComponent implements OnInit {
   currentDateSchedule:DatesSchedule;
   startDate: string;
   schedules: RepresentativeSchedule[];
+  searchValue:string = '';
+  selectRadio:string = '';
 
   constructor(private RepScheduleObj:ScheduleService, private route:ActivatedRoute, private DateScheduleObj:DateScheduleService, private router: Router){
     this.startDate = formatDate(this.route.snapshot.paramMap.get("date"),'MM-dd-yyyy','en-US');

@@ -1,7 +1,7 @@
 <br><br><br><br>
 <a routerLink="" style="margin-left:100px;color:black;cursor: pointer;;"> <i class="fa fa-arrow-left" style="font-size:20px" aria-hidden="true"></i> Back </a><br><br>
 
-<div class="body">
+<div class="body stock-div">
   <section>
     <br>
     <h1>Medicine Stocks</h1>
@@ -34,6 +34,11 @@
   </section>
   <br>
   <br>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li (click)="changePage(i+1)" class="page-item page-li" *ngFor="let page of [].constructor(totalPages); index as i">
+        <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage" >{{i+1}}</a>
+      </li>
+    </ul>
+  </nav>
 </div>
-<br><br>
-  
