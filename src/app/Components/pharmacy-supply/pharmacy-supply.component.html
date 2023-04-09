@@ -1,3 +1,4 @@
+
 <div>
     <input class="inputFilter" [(ngModel)]="searchValue" placeholder="Search by pharmacy" />
 </div>
@@ -20,3 +21,37 @@
       </li>
     </ul>
 </nav>
+
+<div class="body">
+    <section>
+        <br>
+        <h1>Pharmacy Supply Details</h1>
+        <br>
+        <div class="tbl-header">
+            <table cellPadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>Pharmacy Name</th>
+                        <th>Medicine Name</th>
+                        <th>Supply Count</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+
+                <tbody *ngFor="let schedule of supplyMedicines">
+                    <tr>
+                        <td>{{schedule.pharmacyName}}</td>
+                        <td>{{schedule.medicineName}}</td>
+                        <td>{{schedule.supplyCount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <br>
+    <br>
+</div>
+
