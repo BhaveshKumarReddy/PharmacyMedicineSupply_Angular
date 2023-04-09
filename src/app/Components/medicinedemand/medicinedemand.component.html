@@ -1,14 +1,25 @@
-<p>Alert! Once you submit, you can't come back</p>
+<br>
+<br>
+<br>
+<div class="alert error" style="width:400px;margin-left:550px;">
+    <label class="close" title="close" for="alert1">
+        
+  </label>
+    <p class="text">
+        Alert! Once you submit, you can't come back     <i class='fas fa-exclamation-circle' style='font-size:15px'></i>
+    </p>
+</div>
+<form #demandForm="ngForm" (submit)="submitDemand()" style="margin-left:620px;">
+    
+    <table  *ngFor="let medicine of medicineDemand; index as i">
+        <tr>
+        <td style="width:150px"><span style="margin:10px;width:260px;">{{medicine.name}}</span></td>
+        <td><input style="margin:10px;" (keyup)="errorDemand=''" #demand=ngModel name="demand" [(ngModel)]="medicineDemand[i].demandCount" type="number" required min="0" max="100"/></td>
+        </tr>
+    </table>
 
-<form #demandForm="ngForm" (submit)="submitDemand()">
-
-    <div *ngFor="let medicine of medicineDemand; index as i">
-        <p>{{medicine.name}}</p>
-        <input (keyup)="errorDemand=''" #demand=ngModel name="demand" [(ngModel)]="medicineDemand[i].demandCount" type="number" required min="0" max="100"/>
-    </div>
-
-    <span *ngIf="errorDemand!=''">{{errorDemand}}</span>
-    <input [disabled]="errorDemand!='' || demandForm.invalid" type="submit" value="Submit"/>
+    <span *ngIf="errorDemand!=''" style="margin-left:60px;margin-top:20px;">{{errorDemand}}</span>
+    <input style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-left:40px;margin-top:20px;" [disabled]="errorDemand!='' || demandForm.invalid" type="submit" value="Submit"/>
 
 </form>
 
