@@ -34,7 +34,7 @@
         <th>Date</th>
         <th>Slot</th>
     </tr>
-    <tr *ngFor="let schedule of schedules | FilterByNames:searchValue:selectRadio">
+    <tr *ngFor="let schedule of schedules | FilterByNamesLib:searchValue:selectRadio">
         <td>{{schedule.representativeName}}</td>
         <td>{{schedule.doctorName}}</td>
         <td>{{schedule.treatingAilment}}</td>

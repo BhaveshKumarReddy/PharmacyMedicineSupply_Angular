@@ -7,7 +7,7 @@
         <th>Medicine Name</th>
         <th>Supply Count</th>
     </tr>
-    <tr *ngFor="let schedule of supplyMedicines | FilterByPharmacy:searchValue">
+    <tr *ngFor="let schedule of supplyMedicines | FilterByPharmacyLib:searchValue">
         <td>{{schedule.pharmacyName}}</td>
         <td>{{schedule.medicineName}}</td>
         <td>{{schedule.supplyCount}}</td>

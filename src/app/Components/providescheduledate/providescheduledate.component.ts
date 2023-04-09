@@ -7,6 +7,7 @@ import { DatesSchedule } from 'src/Models/DatesSchedule';
 import { RepresentativeSchedule } from 'src/Models/RepresentativeSchedule';
 import { DateScheduleService } from 'src/app/Services/DateSchedule/date-schedule.service';
 import { ScheduleService } from 'src/app/Services/Schedule/schedule.service';
+import { FilterByStatusLib } from 'projects/pipes-lib/src/public-api';
 
 @Component({
   selector: 'app-providescheduledate',
