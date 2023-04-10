@@ -9,6 +9,15 @@ input {
   border: none;
 }
 
+.inputdesign{
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.button-design{
+  border-radius: 5px;
+}
+
 button:focus {
   outline: none;
 }
@@ -138,8 +147,7 @@ button:focus {
   font-weight: 200;
   margin-top: 75px;
   text-align: center;
-  font-size: 40px;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
 }

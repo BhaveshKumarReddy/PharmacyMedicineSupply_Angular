@@ -48,4 +48,11 @@ export class PharmacySupplyComponent {
          console.log(error);
     })
   }
+
+  checkLength(){
+    if(this.supplyMedicines.length>0){
+      return true;
+    }
+    else return false;
+  }
 }

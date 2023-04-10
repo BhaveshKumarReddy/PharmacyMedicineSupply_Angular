@@ -9,6 +9,15 @@ input {
   border: none;
 }
 
+.inputdesign{
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.button-design{
+  border-radius: 5px;
+}
+
 button:focus {
   outline: none;
 }

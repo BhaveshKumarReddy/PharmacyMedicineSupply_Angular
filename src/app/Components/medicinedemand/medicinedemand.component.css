@@ -6,4 +6,5 @@
 .alert.error .text,
 .alert.error .close {
     color: rgb(185, 74, 72);
+    padding: 10px;
 }

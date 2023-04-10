@@ -14,7 +14,7 @@ export class LoginComponent {
 token=''
 invalidCredentialMessage: string="";
 loginform:FormGroup= new FormGroup({});
-managerlogin:ManagerLogin={email:"b@gmail.com",password:"123456"};
+managerlogin:ManagerLogin={email:"",password:""};
 constructor(private authserviceobj:AuthenticationServiceService, private route:Router, private https:HttpClient){}
 ngOnInit(){
   this.loginform= new FormGroup({
@@ -34,6 +34,7 @@ login(){
   this.authserviceobj.ManagerLogin(this.managerlogin).subscribe({
     next: (data:any)=>{
       this.token = data.token
+      localStorage.setItem("userName",data.name)
       localStorage.setItem("token",this.token)
       this.route.navigateByUrl("/")
     },

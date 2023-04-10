@@ -26,6 +26,11 @@
                         </ng-template>
                         <ng-template #is_loggedIn>
                             <li class="nav-item">
+                                <a class="nav-link" style="color: #e6e6e6; font-weight: bold; font-size: 15px ">
+                                    <i style="font-size:21px" class="fa fa-user"></i> {{local.getItem("userName")}}
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" style="color: red; font-weight: bold; font-size: 15px " routerLink="logout">
                                     <i class='fas fa-reply-all' style='font-size:21px;color:red'></i> Logout
                                 </a>
