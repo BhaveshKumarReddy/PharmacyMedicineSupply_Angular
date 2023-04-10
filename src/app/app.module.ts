@@ -13,9 +13,7 @@ import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-s
 import { HomeComponent } from './Components/home/home.component';
 import { MedicinestockdisplayComponent } from './Components/medicinestockdisplay/medicinestockdisplay.component';
 import { LogoutComponent } from './Components/logout/logout.component';
-import { FilterByStatus } from './Pipes/DateSchedulePipe';
-import { FilterByNames } from './Pipes/RepresentativeSchedulePipe';
-import { FilterByPharmacy } from './Pipes/PharmacySupplyPipe';
+import { PipesLibModule } from 'dist/pipes-lib';
 
 @NgModule({
   declarations: [
@@ -29,16 +27,14 @@ import { FilterByPharmacy } from './Pipes/PharmacySupplyPipe';
     HomeComponent,
     MedicinestockdisplayComponent,
     LogoutComponent,
-    FilterByStatus,
-    FilterByNames,
-    FilterByPharmacy
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PipesLibModule
   ], 
   providers: [],
   bootstrap: [AppComponent]
