@@ -2,7 +2,7 @@
 <a routerLink="" style="margin-left:100px;color:black;cursor: pointer;"> <i class="fa fa-arrow-left" style="font-size:20px" aria-hidden="true"></i> Back </a><br><br>
 <br>
 <div class="body stock-div">
-  <section>
+  <section *ngIf="checkLength(); else noData" >
     <br>
     <h1>Medicine Stocks</h1>
     <br>
@@ -34,6 +34,7 @@
   </section>
   <br>
   <br>
+  <ng-template #noData><h3 style="margin-top: 20px;">Stock is not available</h3></ng-template>
   <nav aria-label="...">
     <ul class="pagination">
       <li (click)="changePage(i+1)" class="page-item page-li" *ngFor="let page of [].constructor(totalPages); index as i">

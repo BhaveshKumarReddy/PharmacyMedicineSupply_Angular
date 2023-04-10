@@ -5,7 +5,7 @@
 <div style="background-image: url('https://biostempharma.com/wp-content/uploads/2021/05/BIOSTEM-PHARMA-Pharma-Franchise-Company-1536x492.jpg');height:400px;">
   
   <div style="padding-top:80px;">
-    <a routerLink="/provideschedule" style="margin-left:600px;color:black;cursor: pointer;padding:10px;;"> <i class="fa fa-arrow-left" style="font-size:17px" aria-hidden="true"></i> Back </a><br><br>
+    <a routerLink="/provideschedule" style="margin-left:750px;color:black;cursor: pointer;padding:10px;;"> <i class="fa fa-arrow-left" style="font-size:17px" aria-hidden="true"></i> Back </a><br><br>
     <input [(ngModel)]="searchValue" class="inputfilter" placeholder="Search By" style="height:30px;width:400px;border-radius: 20px;border:none;outline:none;padding:20px;margin-left:600px;"/>
   </div>
 
@@ -26,7 +26,7 @@
   </span>
 </div>
 
-<div class="body">
+<div class="body"  *ngIf="checkLength()">
     <section>
       <br>
       <h1>Representatives Meeting Schedule Details</h1>

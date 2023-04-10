@@ -15,8 +15,8 @@ export class RegisterComponent {
   nameerrormsg=""
   submitted=false
   registerform:FormGroup=new FormGroup({});
-  manager:Manager={name:"Temporary",email:"temp@gmail.com",password:"123456"};
-  confirmpassword="123456"
+  manager:Manager={name:"",email:"",password:""};
+  confirmpassword=""
   constructor(private authserviceobj:AuthenticationServiceService,private route:Router){}
   
   
@@ -60,6 +60,7 @@ export class RegisterComponent {
           if(data){
             this.authserviceobj.createManagerDetails(this.manager).subscribe({
               next: (data:any)=>{
+                localStorage.setItem("userName",data.name)
                 localStorage.setItem("token",data.token)
                 this.manager=data;
                 this.route.navigateByUrl("/")
@@ -81,6 +82,9 @@ export class RegisterComponent {
             this.nameerrormsg="Username Should be unique";
           }
         this.mailerrormsg="Mail Already Exists";
+      },
+      error => {
+        console.log(error);
       })
       
     }

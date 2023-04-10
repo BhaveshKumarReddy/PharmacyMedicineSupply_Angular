@@ -24,8 +24,7 @@ export class MedicineDemandService {
       headers:new HttpHeaders({
         'Content-Type':'application/json;charset=UTF-8',
         'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Method':'*',
-        'Authorization': 'Bearer '+this.auth_token
+        'Access-Control-Allow-Method':'*'
       })
     });    
   }

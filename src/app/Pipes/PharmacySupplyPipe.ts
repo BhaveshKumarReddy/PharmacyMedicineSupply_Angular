@@ -7,7 +7,6 @@ import { PharmacyMedicineSupply } from "src/Models/PharmacyMedicineSupply";
 export class FilterByPharmacy implements PipeTransform{
     transform(supply: PharmacyMedicineSupply[], name:string): PharmacyMedicineSupply[] {
         var transformed_array = supply.filter(x => x.pharmacyName.startsWith(name));
-        console.log(transformed_array);
         return transformed_array;
     }
 }

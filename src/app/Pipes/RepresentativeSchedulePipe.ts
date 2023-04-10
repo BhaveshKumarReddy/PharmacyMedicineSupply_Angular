@@ -7,7 +7,6 @@ import { RepresentativeSchedule } from "src/Models/RepresentativeSchedule";
 })
 export class FilterByNames implements PipeTransform{
     transform(schedules: RepresentativeSchedule[], name:string, type:string): RepresentativeSchedule[] {
-        console.log(name + "-  "+ type);
         var transformed_array;
         if(type == "Ailment"){
             transformed_array = schedules.filter(x => x.treatingAilment.startsWith(name));
@@ -18,7 +17,6 @@ export class FilterByNames implements PipeTransform{
         else{
             transformed_array = schedules.filter(x =>  x.representativeName.startsWith(name));
         }
-        console.log(transformed_array);
         return transformed_array;
     }
 }

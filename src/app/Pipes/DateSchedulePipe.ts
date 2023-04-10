@@ -16,7 +16,6 @@ export class FilterByStatus implements PipeTransform{
         else{
             transformed_array = schedule;
         }
-        console.log(transformed_array);
         return transformed_array;
     }
 }

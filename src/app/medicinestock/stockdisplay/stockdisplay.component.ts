@@ -4,11 +4,12 @@ import { MedicineStock } from 'src/Models/MedicineStock';
 import { MedicinestockdisplayService } from 'src/app/Services/MedicineStockDisplay/medicinestockdisplay.service';
 
 @Component({
-  selector: 'app-medicinestockdisplay',
-  templateUrl: './medicinestockdisplay.component.html',
-  styleUrls: ['./medicinestockdisplay.component.css']
+  selector: 'app-stockdisplay',
+  templateUrl: './stockdisplay.component.html',
+  styleUrls: ['./stockdisplay.component.css']
 })
-export class MedicinestockdisplayComponent {
+export class StockdisplayComponent {
+
   medicinestocklist:MedicineStock[]=[];
   currentPage:number = 1;
   totalPages:number;
@@ -18,6 +19,9 @@ export class MedicinestockdisplayComponent {
       this.medicinestocklist = data.medicineStocks;
       this.currentPage = data.currentPage;
       this.totalPages = data.pages;
+    },
+    error => {
+      console.log(error);
     })
   }
 
@@ -27,6 +31,16 @@ export class MedicinestockdisplayComponent {
       this.medicinestocklist = data.medicineStocks;
       this.currentPage = data.currentPage;
       this.totalPages = data.pages;
+    },
+    error => {
+      console.log(error);
     })
+  }
+  
+  checkLength(){
+    if(this.medicinestocklist.length>0){
+      return true;
+    }
+    else return false;
   }
 }

@@ -1,25 +1,30 @@
 <br>
 <br>
 <br>
-<div class="alert error" style="width:400px;margin-left:550px;">
+<div style="margin-top:10px;">
+    <a class="back-link" style="color:black;margin:20px;" routerLink="/provideschedule">
+        <i class="fa fa-arrow-left"></i> Back
+    </a>
+</div>
+<div class="alert error" style="width:480px;margin-left:550px;">
     <label class="close" title="close" for="alert1">
         
   </label>
     <p class="text">
-        Alert! Once you submit, you can't come back     <i class='fas fa-exclamation-circle' style='font-size:15px'></i>
+        <i class='fas fa-exclamation-circle' style='font-size:15px'></i> Alert! Once you submit, you can't enter demand again   
     </p>
 </div>
-<form #demandForm="ngForm" (submit)="submitDemand()" style="margin-left:620px;">
+<form #demandForm="ngForm" (submit)="submitDemand()" style="margin-left:620px; margin-bottom: 60px;">
     
-    <table  *ngFor="let medicine of medicineDemand; index as i">
+    <table style="background-color: rgb(236, 236, 236); margin-bottom: 10px; border-radius: 5px;"  *ngFor="let medicine of medicineDemand; index as i">
         <tr>
         <td style="width:150px"><span style="margin:10px;width:260px;">{{medicine.name}}</span></td>
-        <td><input style="margin:10px;" (keyup)="errorDemand=''" #demand=ngModel name="demand" [(ngModel)]="medicineDemand[i].demandCount" type="number" required min="0" max="100"/></td>
+        <td><input style="margin:10px; padding: 3px; border-radius: 3px; border-color: rgb(0, 255, 132);" (keyup)="errorDemand=''" #demand=ngModel name="demand" [(ngModel)]="medicineDemand[i].demandCount" type="number" required min="0" max="100"/></td>
         </tr>
     </table>
 
     <span *ngIf="errorDemand!=''" style="margin-left:60px;margin-top:20px;">{{errorDemand}}</span>
-    <input style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-left:40px;margin-top:20px;" [disabled]="errorDemand!='' || demandForm.invalid" type="submit" value="Submit"/>
+    <input style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-left:40px;margin-top:20px; border-radius: 4px;" [disabled]="errorDemand!='' || demandForm.invalid" type="submit" value="Submit"/>
 
 </form>
 

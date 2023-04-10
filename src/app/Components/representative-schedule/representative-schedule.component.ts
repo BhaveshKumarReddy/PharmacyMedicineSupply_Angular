@@ -15,16 +15,16 @@ import { RepresentativeSchedule } from 'src/Models/RepresentativeSchedule';
 
 export class RepresentativeScheduleComponent implements OnInit {
 
-  newSchedule:RepresentativeSchedule[]=[];
-  DateSchedule:DatesSchedule[]=[];
-  currentDateSchedule:DatesSchedule;
+  newSchedule: RepresentativeSchedule[] = [];
+  DateSchedule: DatesSchedule[] = [];
+  currentDateSchedule: DatesSchedule;
   startDate: string;
   schedules: RepresentativeSchedule[];
-  searchValue:string = '';
-  selectRadio:string = '';
+  searchValue: string = '';
+  selectRadio: string = '';
 
-  constructor(private RepScheduleObj:ScheduleService, private route:ActivatedRoute, private DateScheduleObj:DateScheduleService, private router: Router){
-    this.startDate = formatDate(this.route.snapshot.paramMap.get("date"),'MM-dd-yyyy','en-US');
+  constructor(private RepScheduleObj: ScheduleService, private route: ActivatedRoute, private DateScheduleObj: DateScheduleService, private router: Router) {
+    this.startDate = formatDate(this.route.snapshot.paramMap.get("date"), 'MM-dd-yyyy', 'en-US');
     console.log(this.startDate);
   }
 
@@ -33,42 +33,56 @@ export class RepresentativeScheduleComponent implements OnInit {
     this.getDateScheduleByDate();
   }
 
-  get_ScheduleByDate():void
-  {
-    this.RepScheduleObj.getScheduleByDate(this.startDate).subscribe(data=>{
-      this.schedules=data;
-    });
+  get_ScheduleByDate(): void {
+    this.RepScheduleObj.getScheduleByDate(this.startDate).subscribe(data => {
+      this.schedules = data;
+    },
+      error => {
+        console.log(error);
+      });
   }
 
-  getDateScheduleByDate():void{
-    this.DateScheduleObj.getAllDateSchedule().subscribe(data =>{
+  getDateScheduleByDate(): void {
+    this.DateScheduleObj.getAllDateSchedule().subscribe(data => {
       data.forEach(element => {
-        if(formatDate(element.startDate,'MM-dd-yyyy','en-US') == formatDate(this.startDate,'MM-dd-yyyy','en-US')){
+        if (formatDate(element.startDate, 'MM-dd-yyyy', 'en-US') == formatDate(this.startDate, 'MM-dd-yyyy', 'en-US')) {
           this.currentDateSchedule = element;
         }
       })
-    });
+    },
+      error => {
+        console.log(error);
+      });
   }
 
-  checkEligible(scheduleDate:string){
-    return formatDate(scheduleDate,'MM-dd-yyyy','en-US')<=formatDate(new Date(),'MM-dd-yyyy','en-US');
+  checkEligible(scheduleDate: string) {
+    return formatDate(scheduleDate, 'MM-dd-yyyy', 'en-US') <= formatDate(new Date(), 'MM-dd-yyyy', 'en-US');
   }
 
-  OpenMedicineDemand(scheduleObj:RepresentativeSchedule){
+  OpenMedicineDemand(scheduleObj: RepresentativeSchedule) {
     console.log(scheduleObj.medicine);
-    localStorage.setItem('medicine',scheduleObj.medicine);
-    localStorage.setItem('scheduleStartDate',this.startDate);
-    localStorage.setItem('scheduleId',scheduleObj.id+"");
-    this.router.navigateByUrl("/medicinedemand/"+scheduleObj.id);
+    localStorage.setItem('medicine', scheduleObj.medicine);
+    localStorage.setItem('scheduleStartDate', this.startDate);
+    localStorage.setItem('scheduleId', scheduleObj.id + "");
+    this.router.navigateByUrl("/medicinedemand/" + scheduleObj.id);
   }
 
-  newPharmacySupply(){
-    localStorage.setItem('newSupply',true+"");
-    this.router.navigateByUrl("/supply/"+this.startDate);
+  newPharmacySupply() {
+    localStorage.setItem('newSupply', true + "");
+    this.router.navigateByUrl("/supply/" + this.startDate);
   }
 
-  pharmacySupply(){
-    localStorage.setItem('newSupply',false+"");
-    this.router.navigateByUrl("/supply/"+this.startDate);
+  pharmacySupply() {
+    localStorage.setItem('newSupply', false + "");
+    this.router.navigateByUrl("/supply/" + this.startDate);
+  }
+
+  checkLength() {
+    if (this.schedules) {
+      if (this.schedules.length > 0) {
+        return true;
+      }
+    }
+    return false;
   }
 }

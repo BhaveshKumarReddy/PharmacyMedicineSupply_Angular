@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="email" class="control-label inputlabeldesign">
-                                    <div style="color: black;">Email:</div></label><br />
+                                    <div style="color: black; margin-top: 10px;">Email:</div></label><br />
                                 <input (keyup)="clearerrormsgformail()" id="email" class="inputdesign" type="email text"
                                     formControlName="email" />
                                 <div
@@ -39,12 +39,10 @@
                                         *ngIf="registerform.controls['email'].errors?.['required'] && registerform.controls['email'].touched">
                                         <div style="color: rgb(242, 8, 8);">This field is required.</div>
                                     </div>
-                                    <!-- <div *ngIf="registerform.controls['email'].invalid || registerform.controls['email'].errors"> -->
                                     <div
                                         *ngIf="registerform.controls['email'].errors?.['emailAlreadyExists'] && registerform.controls['email'].touched">
                                         <div style="color: rgb(239, 7, 7);">Email already Exists</div>
                                     </div>
-                                    <!-- </div> -->
                                 </div>
                                 <div *ngIf="mailerrormsg!=''">
                                    <div style="color: rgb(248, 8, 8);">This Email already Exists</div>

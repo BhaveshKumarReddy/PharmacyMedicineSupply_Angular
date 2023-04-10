@@ -1,11 +1,11 @@
 <div class="body">
     <br><br><br>
-    <a routerLink="provideschedule" style="margin-left: 50px; color: rgb(255, 255, 255); cursor: pointer;"> <i class="fa fa-arrow-left" style="font-size: 17px; color: white;" aria-hidden="true"></i> Back</a><br><br>
-    <div style="margin-left: 50px;">
+    <a routerLink="/provideschedule" style="margin-left: 50px; color: rgb(255, 255, 255); cursor: pointer;"> <i class="fa fa-arrow-left" style="font-size: 17px; color: white;" aria-hidden="true"></i> Back</a><br><br>
+    <div style="margin-left: 50px;" *ngIf="checkLength(); else noData">
         <br>
         <input class="inputFilter" [(ngModel)]="searchValue" placeholder="Search by pharmacy" />
     </div>
-    <section>
+    <section *ngIf="checkLength()">
         <br>
         <h1>Pharmacy Supply Details</h1>
         <br>
@@ -35,7 +35,7 @@
     </section>
     <br>
     <br>
-    <div class="page-button">
+    <div class="page-button" *ngIf="checkLength()">
         <nav aria-label="...">
             <ul class="pagination">
                 <li (click)="changePage(i+1)" class="page-item page-li"
@@ -46,3 +46,5 @@
         </nav>
     </div>
 </div>
+
+<ng-template #noData><h2 style="text-align: center;">No Supply Details Available</h2></ng-template>
