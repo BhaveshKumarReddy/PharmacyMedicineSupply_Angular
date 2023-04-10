@@ -10,11 +10,11 @@
   </div>
 
   <div class="radius" style="margin-left:530px;padding:20px;">
-    <input checked [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value=""/>
+    <input checked [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black; margin-right: 5px;" name="radioFilter" type="radio" value=""/>
     <label style="margin-right:20px;">Representative Name</label>
-    <input [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value="Doctor"/>
+    <input [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black; margin-right: 5px;" name="radioFilter" type="radio" value="Doctor"/>
     <label style="margin-right:20px;">Doctor Name</label>
-    <input [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black"  name="radioFilter" type="radio" value="Ailment"/>
+    <input [(ngModel)]="selectRadio" class="radiofilter" style="accent-color:black; margin-right: 5px;"  name="radioFilter" type="radio" value="Ailment"/>
     <label style="margin-right:20px;">Treating Ailment</label>
   </div>
 
@@ -33,7 +33,6 @@
       <br>
       <div class="tbl-header">
         <table cellpadding="0" cellspacing="0" border="0">
-          
             <tr>
                 <th>Representative Name</th>
                 <th>Doctor Name</th>
@@ -41,10 +40,7 @@
                 <th>Contact Number</th>
                 <th>Date</th>
                 <th>Slot</th>
-                
                 <th>Status</th>
-                <th></th>
-                <th></th>
             </tr>
             <tr *ngFor="let schedule of schedules | FilterByNames:searchValue:selectRadio">
                 <td>{{schedule.representativeName}}</td>
@@ -56,7 +52,6 @@
                 <td *ngIf="!(schedule.status) && checkEligible(schedule.date)==false">Pending</td>
                 <td *ngIf="schedule.status">Demand Submitted</td>
                 <td><button (click)="OpenMedicineDemand(schedule)" *ngIf="!schedule.status && checkEligible(schedule.date)" style="height:30px;margin-top:10px;background:white;width:120px;outline: none;border: none;color:black;">Enter Demand</button></td>
-
             </tr>
         </table>
       </div>

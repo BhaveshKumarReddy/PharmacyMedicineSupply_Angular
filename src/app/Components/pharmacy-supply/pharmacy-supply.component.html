@@ -1,8 +1,10 @@
 <div class="body">
-    <div>
+    <br><br><br>
+    <a routerLink="provideschedule" style="margin-left: 50px; color: rgb(255, 255, 255); cursor: pointer;"> <i class="fa fa-arrow-left" style="font-size: 17px; color: white;" aria-hidden="true"></i> Back</a><br><br>
+    <div style="margin-left: 50px;">
         <br>
         <input class="inputFilter" [(ngModel)]="searchValue" placeholder="Search by pharmacy" />
-    </div>    
+    </div>
     <section>
         <br>
         <h1>Pharmacy Supply Details</h1>
@@ -33,12 +35,14 @@
     </section>
     <br>
     <br>
-    <nav aria-label="...">
-        <ul class="pagination">
-          <li (click)="changePage(i+1)" class="page-item page-li" *ngFor="let page of [].constructor(totalPages); index as i">
-            <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage" >{{i+1}}</a>
-          </li>
-        </ul>
-    </nav>
+    <div class="page-button">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li (click)="changePage(i+1)" class="page-item page-li"
+                    *ngFor="let page of [].constructor(totalPages); index as i">
+                    <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage">{{i+1}}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
-
