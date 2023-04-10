@@ -42,7 +42,7 @@
                 <th>Slot</th>
                 <th>Status</th>
             </tr>
-            <tr *ngFor="let schedule of schedules | FilterByNamesLib:searchValue:selectRadio">
+            <tr *ngFor="let schedule of schedules | FilterByNames:searchValue:selectRadio">
                 <td>{{schedule.representativeName}}</td>
                 <td>{{schedule.doctorName}}</td>
                 <td>{{schedule.treatingAilment}}</td>
