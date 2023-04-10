@@ -16,6 +16,7 @@ import { LogoutComponent } from './Components/logout/logout.component';
 import { FilterByStatus } from './Pipes/DateSchedulePipe';
 import { FilterByNames } from './Pipes/RepresentativeSchedulePipe';
 import { FilterByPharmacy } from './Pipes/PharmacySupplyPipe';
+import { PipesLibModule } from 'dist/pipes-lib';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FilterByPharmacy } from './Pipes/PharmacySupplyPipe';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PipesLibModule
   ], 
   providers: [],
   bootstrap: [AppComponent]
