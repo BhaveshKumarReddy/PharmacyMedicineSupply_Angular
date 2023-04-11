@@ -10,14 +10,13 @@
 </div>
 
 <div class="radius" style="margin-left:530px;padding:20px;">
-  <input checked class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value=""/>
+  <input checked class="radiofilter" style="accent-color:black;margin-right:5px" name="radioFilter" type="radio" value=""/>
   <label style="margin-right:20px;">Representative Name</label>
-  <input class="radiofilter" style="accent-color:black" name="radioFilter" type="radio" value="Doctor"/>
+  <input class="radiofilter" style="accent-color:black;margin-right:5px" name="radioFilter" type="radio" value="Doctor"/>
   <label style="margin-right:20px;">Doctor Name</label>
-  <input class="radiofilter" style="accent-color:black"  name="radioFilter" type="radio" value="Ailment"/>
+  <input class="radiofilter" style="accent-color:black;margin-right:5px"  name="radioFilter" type="radio" value="Ailment"/>
   <label style="margin-right:20px;">Treating Ailment</label>
 </div>
-<h2 style="margin-left:720px;">Schedule</h2>
 
 <button *ngIf="currentDateSchedule?.completed && !currentDateSchedule?.supplied" style="height:40px;background:#0db8a4;width:170px;outline: none;border: none;color:white;cursor: pointer;margin-left:700px;" (click)="newPharmacySupply()">Supply</button>
 
