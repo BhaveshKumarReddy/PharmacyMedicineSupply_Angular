@@ -10,13 +10,15 @@ import { MedicinestockdisplayService } from 'src/app/Services/MedicineStockDispl
 })
 export class StockdisplayComponent {
 
-  medicinestocklist:MedicineStock[]=[];
+  medicineStockList:MedicineStock[]=[];
   currentPage:number = 1;
   totalPages:number;
-  constructor(private medicinestockdisplayobj:MedicinestockdisplayService,private route:Router){}
+
+  constructor(private medicineStockDisplayObj:MedicinestockdisplayService,private route:Router){}
+
   ngOnInit(){
-    this.medicinestockdisplayobj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
-      this.medicinestocklist = data.medicineStocks;
+    this.medicineStockDisplayObj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
+      this.medicineStockList = data.medicineStocks;
       this.currentPage = data.currentPage;
       this.totalPages = data.pages;
     },
@@ -27,8 +29,8 @@ export class StockdisplayComponent {
 
   changePage(page:number){
     this.currentPage = page;
-    this.medicinestockdisplayobj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
-      this.medicinestocklist = data.medicineStocks;
+    this.medicineStockDisplayObj.fetchMedicineStock(this.currentPage).subscribe((data:any)=>{
+      this.medicineStockList = data.medicineStocks;
       this.currentPage = data.currentPage;
       this.totalPages = data.pages;
     },
@@ -38,7 +40,7 @@ export class StockdisplayComponent {
   }
   
   checkLength(){
-    if(this.medicinestocklist.length>0){
+    if(this.medicineStockList.length>0){
       return true;
     }
     else return false;

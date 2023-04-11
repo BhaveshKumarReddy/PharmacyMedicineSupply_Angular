@@ -14,18 +14,19 @@ import { ScheduleService } from 'src/app/Services/Schedule/schedule.service';
   styleUrls: ['./providescheduledate.component.css']
 })
 export class ProvidescheduledateComponent {
+
   selectRadio: string
-  datetoschedule: string = ""
+  dateToSchedule: string = ""
   sd: string = ""
   scheduleform: FormGroup = new FormGroup({})
-  listofbookeddates: DatesSchedule[] = []
+  listOfBookedDates: DatesSchedule[] = []
   date: Date = new Date()
-  listofscheduledresults: RepresentativeSchedule[] = []
+  listOfScheduledResults: RepresentativeSchedule[] = []
   maxDate: string = formatDate(new Date("12-31-2023"), 'yyyy-MM-dd', 'en-US');
 
   ngOnInit() {
     this.bookedServObj.getAllDateSchedule().subscribe(data => {
-      this.listofbookeddates = data;
+      this.listOfBookedDates = data;
     },
       error => {
         console.log(error);
@@ -41,14 +42,14 @@ export class ProvidescheduledateComponent {
 
   schedule() {
     let scheduledate1 = { "startDate": this.scheduleform.value.scheduledate };
-    this.datetoschedule = formatDate(scheduledate1.startDate, 'dd-MM-yyyy', 'en-US');
-    this.bookedServObj.checkDateAvailability(this.datetoschedule).subscribe(data => {
+    this.dateToSchedule = formatDate(scheduledate1.startDate, 'dd-MM-yyyy', 'en-US');
+    this.bookedServObj.checkDateAvailability(this.dateToSchedule).subscribe(data => {
       if (!data) {
         alert("Already Booked ! Please pick another date")
       }
       else {
-        this.scheduleobj.createSchedule(this.datetoschedule).subscribe(data => {
-          this.listofscheduledresults = data;
+        this.scheduleobj.createSchedule(this.dateToSchedule).subscribe(data => {
+          this.listOfScheduledResults = data;
           alert("Booked Successfully !");
           location.reload();
         },
@@ -60,8 +61,8 @@ export class ProvidescheduledateComponent {
   }
 
   checkLength() {
-    if (this.listofbookeddates) {
-      if (this.listofbookeddates.length > 0) {
+    if (this.listOfBookedDates) {
+      if (this.listOfBookedDates.length > 0) {
         return true;
       }
     }

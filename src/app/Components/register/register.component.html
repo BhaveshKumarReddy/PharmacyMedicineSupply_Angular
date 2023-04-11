@@ -8,20 +8,20 @@
             <a routerLink="/login" style="color:black; "
                 class="h4-rightBox text-center"><button class="button-33">LOGIN!</button></a>
             <div class='input-fields'>
-                <form [formGroup]="registerform" (ngSubmit)="register()">
+                <form [formGroup]="registerForm" (ngSubmit)="register()">
                     <div class="innerdivform">
                         <div class="form-group">
                             <label for="name"  class="control-label inputlabeldesign"
                                 ><div style="color: black; width:700px;" >Name:</div></label><br />
                             <input (keyup)="clearerrormsgforname()" id="name" type="text" class=" inputdesign"
                                 formControlName="name" />
-                            <div *ngIf="registerform.controls['name'].invalid || registerform.controls['name'].errors">
+                            <div *ngIf="registerForm.controls['name'].invalid || registerForm.controls['name'].errors">
                                 <div
-                                    *ngIf="registerform.controls['name'].errors?.['required'] && registerform.controls['name'].touched">
+                                    *ngIf="registerForm.controls['name'].errors?.['required'] && registerForm.controls['name'].touched">
                                     <div style="color: rgb(240, 9, 9);">This field is required. </div>
                                 </div>
                             </div>
-                            <div *ngIf="nameerrormsg!=''">
+                            <div *ngIf="nameErrorMessage!=''">
                                 <div style="color: rgb(242, 10, 10);">Username must be unique</div>
                             </div>
                             <div class="form-group">
@@ -30,21 +30,21 @@
                                 <input (keyup)="clearerrormsgformail()" id="email" class="inputdesign" type="email text"
                                     formControlName="email" />
                                 <div
-                                    *ngIf="registerform.controls['email'].invalid || registerform.controls['email'].errors">
+                                    *ngIf="registerForm.controls['email'].invalid || registerForm.controls['email'].errors">
                                     <div
-                                        *ngIf="registerform.controls['email'].errors?.['email'] && registerform.controls['email'].touched">
+                                        *ngIf="registerForm.controls['email'].errors?.['email'] && registerForm.controls['email'].touched">
                                         <div style="color: rgb(245, 7, 7);">Email not valid</div>
                                     </div>
                                     <div
-                                        *ngIf="registerform.controls['email'].errors?.['required'] && registerform.controls['email'].touched">
+                                        *ngIf="registerForm.controls['email'].errors?.['required'] && registerForm.controls['email'].touched">
                                         <div style="color: rgb(242, 8, 8);">This field is required.</div>
                                     </div>
                                     <div
-                                        *ngIf="registerform.controls['email'].errors?.['emailAlreadyExists'] && registerform.controls['email'].touched">
+                                        *ngIf="registerForm.controls['email'].errors?.['emailAlreadyExists'] && registerForm.controls['email'].touched">
                                         <div style="color: rgb(239, 7, 7);">Email already Exists</div>
                                     </div>
                                 </div>
-                                <div *ngIf="mailerrormsg!=''">
+                                <div *ngIf="mailErrorMessage!=''">
                                    <div style="color: rgb(248, 8, 8);">This Email already Exists</div>
                                 </div>
 
@@ -54,13 +54,13 @@
                                     <div style="color: black;">Password:</div></label><br />
                                 <input id="password" type="password" class="inputdesign "
                                     formControlName="password" />
-                                <div *ngIf="registerform.controls['password'].invalid || registerform.controls['password'].errors">
+                                <div *ngIf="registerForm.controls['password'].invalid || registerForm.controls['password'].errors">
                                     <div
-                                        *ngIf="registerform.controls['password'].errors?.['required'] && registerform.controls['password'].touched">
+                                        *ngIf="registerForm.controls['password'].errors?.['required'] && registerForm.controls['password'].touched">
                                         <div style="color: rgb(246, 6, 6);">This field is required.</div>
                                     </div>
                                     <div
-                                        *ngIf="registerform.controls['password'].errors?.['minlength'] && registerform.controls['password'].touched">
+                                        *ngIf="registerForm.controls['password'].errors?.['minlength'] && registerForm.controls['password'].touched">
                                         <div style="color: rgb(246, 6, 6);">*Minimum six characters!</div>
                                     </div>
                                 </div>
@@ -71,17 +71,17 @@
                                 <input id="confirmpassword" type="password" class="inputdesign"
                                     formControlName="confirmpassword" />
                                 <div
-                                    *ngIf="registerform.controls['confirmpassword'].invalid || registerform.controls['confirmpassword'].errors">
+                                    *ngIf="registerForm.controls['confirmpassword'].invalid || registerForm.controls['confirmpassword'].errors">
                                     <div
-                                        *ngIf="registerform.controls['confirmpassword'].errors?.['required'] && registerform.controls['confirmpassword'].touched">
+                                        *ngIf="registerForm.controls['confirmpassword'].errors?.['required'] && registerForm.controls['confirmpassword'].touched">
                                         <div style="color: rgb(244, 9, 9);">This field is required.</div>
                                     </div>
 
                                 </div>
                                 <div
-                                    *ngIf="!registerform.controls['confirmpassword'].errors?.['required'] && registerform.controls['confirmpassword'].touched">
+                                    *ngIf="!registerForm.controls['confirmpassword'].errors?.['required'] && registerForm.controls['confirmpassword'].touched">
                                     <div
-                                        *ngIf="registerform.controls['confirmpassword'].value!==registerform.controls['password'].value ">
+                                        *ngIf="registerForm.controls['confirmpassword'].value!==registerForm.controls['password'].value ">
                                         <div style="color: rgb(250, 8, 8);">Password Mismatch</div>
 
                                     </div>
@@ -94,7 +94,7 @@
 
 
                             <div class="form-group" >
-                                <input type="submit" [disabled]="!registerform.valid" value="Register"
+                                <input type="submit" [disabled]="!registerForm.valid" value="Register"
                                     style="background-color:rgb(13, 96, 129);color:white;width:140px;height:40px;border:none;"
                                     class="button-design" />
                             </div>

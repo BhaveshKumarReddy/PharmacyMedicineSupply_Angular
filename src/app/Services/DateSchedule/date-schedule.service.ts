@@ -9,13 +9,7 @@ import { DatesSchedule } from 'src/Models/DatesSchedule';
 })
 export class DateScheduleService {
 
-  currentDateSchedule: DatesSchedule = null;
-  AllSchedule:DatesSchedule[]=[];
-  auth_token:string;
-
-  constructor(private http:HttpClient) {
-    this.auth_token = localStorage.getItem('token');
-  }
+  constructor(private http:HttpClient) {}
   
   req:string="https://localhost:7287/";
 

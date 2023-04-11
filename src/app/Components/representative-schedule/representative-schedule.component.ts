@@ -15,8 +15,6 @@ import { RepresentativeSchedule } from 'src/Models/RepresentativeSchedule';
 
 export class RepresentativeScheduleComponent implements OnInit {
 
-  newSchedule: RepresentativeSchedule[] = [];
-  DateSchedule: DatesSchedule[] = [];
   currentDateSchedule: DatesSchedule;
   startDate: string;
   schedules: RepresentativeSchedule[];

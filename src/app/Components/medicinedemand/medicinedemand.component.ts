@@ -9,9 +9,10 @@ import { MedicineDemandService } from 'src/app/Services/MedicineDemand/medicine-
   styleUrls: ['./medicinedemand.component.css']
 })
 export class MedicinedemandComponent implements OnInit {
+
   medicines = [];
   medicineDemand:MedicineDemand[]=[];
-  new_medicineDemand:MedicineDemand;
+  newMedicineDemand:MedicineDemand;
   scheduleID:number;
   errorDemand:string="";
 
@@ -20,11 +21,11 @@ export class MedicinedemandComponent implements OnInit {
     this.medicines = (localStorage.getItem('medicine')).split(',') ;
     this.medicines.forEach(element => {
       console.log(element);
-      this.new_medicineDemand = {
+      this.newMedicineDemand = {
         name: element,
         demandCount: 0
       };
-      this.medicineDemand.push(this.new_medicineDemand);
+      this.medicineDemand.push(this.newMedicineDemand);
     });
   }
 

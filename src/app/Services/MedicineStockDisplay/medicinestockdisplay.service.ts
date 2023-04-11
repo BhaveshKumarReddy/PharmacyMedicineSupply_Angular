@@ -9,13 +9,10 @@ import { MedicineStockResponse } from 'src/Models/MedicineStockResponse';
 })
 export class MedicinestockdisplayService {
 
-  auth_token:string;
-  constructor(private http:HttpClient) {
-    this.auth_token = localStorage.getItem('token');
-  }
+  constructor(private http:HttpClient) {}
+
   reqestToManagerDetails="https://localhost:7287/api/MedicineStocks"
 
-  //before pagination
   fetchMedicineStockDetails():Observable<MedicineStock[]>
   {
     return this.http.get<MedicineStock[]>(this.reqestToManagerDetails,{

@@ -11,7 +11,6 @@ export class LogoutComponent {
   constructor(private route: Router){}
 
   Logout(){
-    console.log('logging out');
     localStorage.clear();
     this.route.navigateByUrl("/login");
   }

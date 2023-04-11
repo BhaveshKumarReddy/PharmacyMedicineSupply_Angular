@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators,AbstractControl, ValidatorFn, ValidationErrors} from '@angular/forms';
+import { FormControl, FormGroup, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Manager } from 'src/Models/Manager';
 import { AuthenticationServiceService } from 'src/app/Services/Authentication/authentication-service.service';
 import { Router } from '@angular/router';
@@ -11,58 +11,58 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  mailerrormsg=""
-  nameerrormsg=""
-  submitted=false
-  registerform:FormGroup=new FormGroup({});
-  manager:Manager={name:"",email:"",password:""};
-  confirmpassword=""
-  constructor(private authserviceobj:AuthenticationServiceService,private route:Router){}
-  
-  
-  ngOnInit(){
-    this.submitted=false
-    this.registerform=new FormGroup({
-      name:new FormControl(this.manager.name,[
+  mailErrorMessage = ""
+  nameErrorMessage = ""
+  submitted = false
+  registerForm: FormGroup = new FormGroup({});
+  manager: Manager = { name: "", email: "", password: "" };
+  confirmPassword = ""
+  constructor(private authserviceobj: AuthenticationServiceService, private route: Router) { }
+
+
+  ngOnInit() {
+    this.submitted = false
+    this.registerForm = new FormGroup({
+      name: new FormControl(this.manager.name, [
         Validators.required
       ]),
-      email:new FormControl(this.manager.email,[
+      email: new FormControl(this.manager.email, [
         Validators.required, Validators.email
       ]),
-      password:new FormControl(this.manager.password,[
+      password: new FormControl(this.manager.password, [
         Validators.required, Validators.minLength(6)
       ]),
-      confirmpassword:new FormControl(this.confirmpassword,[
+      confirmpassword: new FormControl(this.confirmPassword, [
         Validators.required
       ])
     });
-    
+
 
   }
-  
-  clearerrormsgformail(){
-    this.mailerrormsg=""
+
+  clearerrormsgformail() {
+    this.mailErrorMessage = ""
   }
-  clearerrormsgforname(){
-    this.nameerrormsg=""
+  clearerrormsgforname() {
+    this.nameErrorMessage = ""
   }
-  
-  register(){
-  
-    this.submitted=true
-    let user={"name":this.registerform.value.name,"email":this.registerform.value.email,"password":this.registerform.value.password,"confirmpassword":this.registerform.value.confirmpassword};
-    this.manager.name=user.name;
-    this.manager.email=user.email;
-    this.manager.password=user.password;
-    this.authserviceobj.checkMail(this.manager.email).subscribe(data=>{
-      if(data){
-        this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data=>{
-          if(data){
+
+  register() {
+
+    this.submitted = true
+    let user = { "name": this.registerForm.value.name, "email": this.registerForm.value.email, "password": this.registerForm.value.password, "confirmpassword": this.registerForm.value.confirmpassword };
+    this.manager.name = user.name;
+    this.manager.email = user.email;
+    this.manager.password = user.password;
+    this.authserviceobj.checkMail(this.manager.email).subscribe(data => {
+      if (data) {
+        this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data => {
+          if (data) {
             this.authserviceobj.createManagerDetails(this.manager).subscribe({
-              next: (data:any)=>{
-                localStorage.setItem("userName",data.name)
-                localStorage.setItem("token",data.token)
-                this.manager=data;
+              next: (data: any) => {
+                localStorage.setItem("userName", data.name)
+                localStorage.setItem("token", data.token)
+                this.manager = data;
                 this.route.navigateByUrl("/")
               },
               error: (error) => {
@@ -70,27 +70,27 @@ export class RegisterComponent {
               }
             })
           }
-          else{
-            this.nameerrormsg="Username Should be unique";
+          else {
+            this.nameErrorMessage = "Username Should be unique";
           }
         })
-        
-      }
-      else{
-        this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data=>{
-          if(!data){
-            this.nameerrormsg="Username Should be unique";
-          }
-        this.mailerrormsg="Mail Already Exists";
-      },
-      error => {
-        console.log(error);
-      })
-      
-    }
-  })
 
-    
+      }
+      else {
+        this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data => {
+          if (!data) {
+            this.nameErrorMessage = "Username Should be unique";
+          }
+          this.mailErrorMessage = "Mail Already Exists";
+        },
+          error => {
+            console.log(error);
+          })
+
+      }
+    })
+
+
 
   }
 }

@@ -10,10 +10,7 @@ import { formatDate } from '@angular/common';
 })
 export class ScheduleService {
 
-  auth_token:string;
-  constructor(private http:HttpClient) {
-    this.auth_token = localStorage.getItem('token');
-  }
+  constructor(private http:HttpClient) {}
   
   req:string="https://localhost:7287/api/MedicalRepresentativeSchedule/";
 

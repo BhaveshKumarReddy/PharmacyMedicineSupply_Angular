@@ -8,16 +8,10 @@ import { MedicineDemand } from 'src/Models/MedicineDemand';
 })
 export class MedicineDemandService {
   
-  auth_token:string;
-  constructor(private http:HttpClient) { 
-    this.auth_token = localStorage.getItem('token');
-  }
+  constructor(private http:HttpClient) {}
   
-  //Variable to store the request URL for accessing API.
   req:string="https://localhost:7287/api/MedicineDemand/";
 
-  
-  //Method to get the Schedule from the API.
   updateListOfMedicineDemand(id:number,demands:MedicineDemand[]):Observable<any>
   {
     return this.http.put<any>(this.req+"UpdateAllDemands/"+id,JSON.stringify(demands),{

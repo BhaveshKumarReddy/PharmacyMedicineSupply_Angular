@@ -13,25 +13,25 @@ import { AuthenticationServiceService } from 'src/app/Services/Authentication/au
 export class LoginComponent {
 token=''
 invalidCredentialMessage: string="";
-loginform:FormGroup= new FormGroup({});
-managerlogin:ManagerLogin={email:"",password:""};
+loginForm:FormGroup= new FormGroup({});
+managerLogin:ManagerLogin={email:"",password:""};
 constructor(private authserviceobj:AuthenticationServiceService, private route:Router, private https:HttpClient){}
 ngOnInit(){
-  this.loginform= new FormGroup({
-    email: new FormControl(this.managerlogin.email,[
+  this.loginForm= new FormGroup({
+    email: new FormControl(this.managerLogin.email,[
       Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.email
     ]),
-    password: new FormControl(this.managerlogin.password,[
+    password: new FormControl(this.managerLogin.password,[
       Validators.required, Validators.minLength(6)
       ])
     });
   }
 
 login(){
-  let user={"email":this.loginform.value.email, "password":this.loginform.value.password};
-  this.managerlogin.email=user.email;
-  this.managerlogin.password=user.password;
-  this.authserviceobj.ManagerLogin(this.managerlogin).subscribe({
+  let user={"email":this.loginForm.value.email, "password":this.loginForm.value.password};
+  this.managerLogin.email=user.email;
+  this.managerLogin.password=user.password;
+  this.authserviceobj.ManagerLogin(this.managerLogin).subscribe({
     next: (data:any)=>{
       this.token = data.token
       localStorage.setItem("userName",data.name)
