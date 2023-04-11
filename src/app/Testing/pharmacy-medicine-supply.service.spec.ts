@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { PharmacyMedicineSupply } from 'src/Models/PharmacyMedicineSupply';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { PharmacyMedicineSuppliesResponse } from 'src/Models/PharmacyMedicineSupplyResponse';
-import { PharmacyMedicineSupplyService } from './pharmacy-medicine-supply.service';
+import { PharmacyMedicineSupplyService } from '../Services/PharmacyMedicineSupply/pharmacy-medicine-supply.service';
 
 describe('PharmacyMedicineSupplyService', () => {
   let service: PharmacyMedicineSupplyService;
