@@ -75,7 +75,7 @@ export class RegisterComponent {
         })
         
       }
-      else{
+      else{ 
         this.authserviceobj.checkUniqueName(this.manager.name).subscribe(data=>{
           if(!data){
             this.nameerrormsg="Username Should be unique";

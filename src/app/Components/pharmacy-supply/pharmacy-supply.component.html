@@ -1,5 +1,7 @@
 <div class="body">
-    <div>
+    <br><br><br>
+    <a routerLink="" style="margin-left:50px;color:black;cursor: pointer;"> <i class="fa fa-arrow-left" style="font-size:20px" aria-hidden="true"></i> Back </a><br><br>
+    <div style="margin-left: 50px;">
         <input class="inputFilter" [(ngModel)]="searchValue" placeholder="Search by pharmacy" />
     </div>    
     <section>
@@ -32,12 +34,14 @@
     </section>
     <br>
     <br>
+    <div class="page-button">
     <nav aria-label="...">
         <ul class="pagination">
           <li (click)="changePage(i+1)" class="page-item page-li" *ngFor="let page of [].constructor(totalPages); index as i">
-            <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage" >{{i+1}}</a>
+            <a class="page-link page-a" [class.currentPage]="(1+i)==currentPage">{{i+1}}</a>
           </li>
         </ul>
     </nav>
+    </div>
 </div>
 

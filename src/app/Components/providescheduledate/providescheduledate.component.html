@@ -10,11 +10,11 @@
             <label style="margin-left: 83px;color:white;font-size:17px;font-weight: 700;">Date</label><br>
             <input type="date" formControlName="scheduledate" [max]="maxDate" style="width:210px;padding:8px;border-radius: 4px;">
             <div style="color:white" *ngIf="scheduleform.controls['scheduledate'].touched && scheduleform.controls['scheduledate'].invalid">
-                <small *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is required</small>
-                <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should not be
-                    enterd</small>
-                <small *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDay'] && !scheduleform.controls['scheduledate'].errors?.['invalidDate']">Sunday should not be
-                    enterd</small>
+                <small style="color: red;" *ngIf="scheduleform.controls['scheduledate'].errors?.['required']">Date is required</small>
+                <small style="color:red" ; *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDate']">Past date should not be
+                    entered</small>
+                <small style="color: red;" *ngIf="scheduleform.controls['scheduledate'].errors?.['invalidDay'] && !scheduleform.controls['scheduledate'].errors?.['invalidDate']"><div style="color: red;">Sunday should not be
+                    entered</div></small>
             </div>
             </div>
             <br>
