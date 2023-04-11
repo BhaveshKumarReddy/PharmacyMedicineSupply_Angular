@@ -54,14 +54,16 @@
                                     <div style="color: black;">Password:</div></label><br />
                                 <input id="password" type="password" class="inputdesign "
                                     formControlName="password" />
-                                <div
-                                    *ngIf="registerform.controls['password'].invalid || registerform.controls['password'].errors">
+                                <div *ngIf="registerform.controls['password'].invalid || registerform.controls['password'].errors">
                                     <div
                                         *ngIf="registerform.controls['password'].errors?.['required'] && registerform.controls['password'].touched">
                                         <div style="color: rgb(246, 6, 6);">This field is required.</div>
                                     </div>
+                                    <div
+                                        *ngIf="registerform.controls['password'].errors?.['minlength'] && registerform.controls['password'].touched">
+                                        <div style="color: rgb(246, 6, 6);">*Minimum six characters!</div>
+                                    </div>
                                 </div>
-
                             </div>
                             <div class="form-group">
                                 <label for="confirmpassword" style="color: black;" class="control-label inputlabeldesign"> 

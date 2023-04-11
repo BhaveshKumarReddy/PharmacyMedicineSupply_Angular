@@ -8,3 +8,20 @@
     color: rgb(185, 74, 72);
     padding: 10px;
 }
+
+.submitDemand{
+    height:40px;
+    background-color:#0db8a4;
+    width:170px;outline: none;
+    border: none;color:white;
+    cursor: pointer;
+    margin-left:40px;
+    margin-top:20px; 
+    border-radius: 4px;
+}
+
+.disabledSubmit{
+    background-color: rgb(185, 185, 185) !important;
+    cursor: default;
+}
+

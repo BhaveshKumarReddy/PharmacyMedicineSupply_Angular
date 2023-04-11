@@ -9,6 +9,7 @@ import { PharmacySupplyComponent } from './Components/pharmacy-supply/pharmacy-s
 import { HomeComponent } from './Components/home/home.component';
 import { LogoutComponent } from './Components/logout/logout.component';
 import { AuthGuardGuard } from './Guards/auth-guard.guard';
+import { StockdisplayComponent } from './medicinestock/stockdisplay/stockdisplay.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path:'logout',component:LogoutComponent,canActivate:[AuthGuardGuard]},
   {path:'schedules/:date',component:RepresentativeScheduleComponent,canActivate:[AuthGuardGuard]},
   {path:'medicinedemand/:id',component:MedicinedemandComponent,canActivate:[AuthGuardGuard]},
-  {path:'supply/:date',component:PharmacySupplyComponent,canActivate:[AuthGuardGuard]}
+  {path:'supply/:date',component:PharmacySupplyComponent,canActivate:[AuthGuardGuard]},
+  {path:'stocks',component: StockdisplayComponent, canActivate:[AuthGuardGuard]},
+  {path:'**', pathMatch:'full' , redirectTo:''}
 ];
 
 @NgModule({

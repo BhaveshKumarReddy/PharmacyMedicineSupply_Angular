@@ -30,7 +30,7 @@ export class RegisterComponent {
         Validators.required, Validators.email
       ]),
       password:new FormControl(this.manager.password,[
-        Validators.required
+        Validators.required, Validators.minLength(6)
       ]),
       confirmpassword:new FormControl(this.confirmpassword,[
         Validators.required

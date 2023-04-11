@@ -37,15 +37,18 @@ export class MedicinedemandComponent implements OnInit {
     this.errorDemand="";
     for(let i=0;i<this.medicineDemand.length;i++){
       if(this.medicineDemand[i].demandCount==null){
+        console.log('called');
         this.errorDemand = "Required";
         break;
       }
       else if(this.medicineDemand[i].demandCount!=null && (this.medicineDemand[i].demandCount>100 || this.medicineDemand[i].demandCount<0)){
         if(this.medicineDemand[i].demandCount>100){
+          console.log('called');
           this.errorDemand = "Demand Can't be more than 100";
           break;
         }
         else{
+          console.log('called');
           this.errorDemand = "Demand Can't be in negative";
           break;
         }
@@ -54,6 +57,7 @@ export class MedicinedemandComponent implements OnInit {
     var scheduleDate = localStorage.getItem('scheduleStartDate');
     console.log(scheduleDate);
     if(this.errorDemand==""){
+      console.log('called');
       this.demandService.updateListOfMedicineDemand(parseInt(localStorage.getItem('scheduleId')),this.medicineDemand).subscribe(
         data => {
           this.router.navigateByUrl("/schedules/"+scheduleDate);

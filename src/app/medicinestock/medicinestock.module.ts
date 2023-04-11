@@ -12,6 +12,9 @@ import { StockdisplayComponent } from './stockdisplay/stockdisplay.component';
   imports: [
     CommonModule,
     MedicinestockRoutingModule
+  ],
+  exports: [
+    StockdisplayComponent
   ]
 })
 export class MedicinestockModule { }
